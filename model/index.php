@@ -11,7 +11,7 @@ class model extends data
         $dbname = $data->get_dbname();
 
         $mysqli = new mysqli($hostname, $username, $password, $dbname);
-        $query = "insert into login (username, password) values ($user, $pass1)";
+        $query = "insert into login (username, password) values ('" . $user . "','" .  $pass1 . "')";
         $mysqli->query($query);
         $mysqli->close();
     }
