@@ -3,7 +3,7 @@ require_once("secret.php");
 class model extends data
 {
 
-    public function connection()
+    private function connection()
     {
         $data = new data();
         $hostname = $data->get_hostname();
@@ -23,6 +23,6 @@ class model extends data
     }
 
     public function checkUser($user)
-    {
+    {        
     }
 }
