@@ -14,9 +14,13 @@ class controller
     $pass1 = $_GET["password"];
     $pass2 = $_GET["password2"];
 
-    $model = new model();
-    $model->create($user, $pass1, $pass2);
-    header("Location: /store");
+    if ($pass1 == $pass2) {
+      $model = new model();
+      $model->create($user, $pass1, $pass2);
+      header("Location: /store");
+    } else {
+      header("Location: /store/index.php?flag=signup");
+    }
   }
 
   static function signup()
