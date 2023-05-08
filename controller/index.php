@@ -14,8 +14,15 @@ class controller
     $pass1 = $_GET["password"];
     $pass2 = $_GET["password2"];
 
-    if ($pass1 == $pass2) {
-      $model = new model();
+    $model = new model();
+    // check if the username exist
+    $obj = $model->checkUser($user);
+
+    // 1 if it exists
+    // 0 if it does not exist
+    $user_existence = $obj->num_rows;
+
+    if ($pass1 == $pass2 && $user_existence == 0) {
       $model->create($user, $pass1, $pass2);
       header("Location: /store");
     } else {

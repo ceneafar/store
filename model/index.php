@@ -23,6 +23,11 @@ class model extends data
     }
 
     public function checkUser($user)
-    {        
+    {
+        $mysqli = $this->connection();
+        $query = "select username from login where username='". $user . "'";
+        $res = $mysqli->query($query);
+        $mysqli->close();
+        return $res;
     }
 }
