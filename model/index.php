@@ -2,7 +2,8 @@
 require_once("secret.php");
 class model extends data
 {
-    public function create($user, $pass1, $pass2)
+
+    public function connection()
     {
         $data = new data();
         $hostname = $data->get_hostname();
@@ -10,9 +11,18 @@ class model extends data
         $password = $data->get_password();
         $dbname = $data->get_dbname();
 
-        $mysqli = new mysqli($hostname, $username, $password, $dbname);
+        return new mysqli($hostname, $username, $password, $dbname);
+    }
+
+    public function create($user, $pass1, $pass2)
+    {
+        $mysqli = $this->connection();
         $query = "insert into login (username, password) values ('" . $user . "','" .  $pass1 . "')";
         $mysqli->query($query);
         $mysqli->close();
+    }
+
+    public function checkUser($user)
+    {
     }
 }
