@@ -1,11 +1,26 @@
 <?php
 
 require_once("model/index.php");
+
 class controller
 {
   static function index()
   {
     require_once("view/index.php");
+  }
+
+  static function login()
+  {
+    $username = $_GET["username"];
+    $password = $_GET["password"];
+    $model = new model();
+    if ($model->checkLogin($username, $password) == true) {
+      session_start();
+      $_SESSION["username"] = $username;
+      require_once("./view/login.php");
+    } else {
+      header("Location: /store");
+    }
   }
 
   static function create()

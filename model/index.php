@@ -18,16 +18,37 @@ class model extends data
     {
         $mysqli = $this->connection();
         $query = "insert into login (username, password) values ('" . $user . "','" .  $pass1 . "')";
-        $mysqli->query($query);
+        $res = $mysqli->query($query);
         $mysqli->close();
+        return $res;
     }
 
     public function checkUser($user)
     {
         $mysqli = $this->connection();
-        $query = "select username from login where username='". $user . "'";
+        $query = "select username from login where username='" . $user . "'";
         $res = $mysqli->query($query);
         $mysqli->close();
         return $res;
+    }
+
+    public function checkLogin($username, $password)
+    {
+        $exist = $this->checkUser($username)->num_rows ? true : false;
+
+        if ($exist) {
+            $mysqli = $this->connection();
+            $query = "select password from login where username='" . $username . "'";
+            $res = $mysqli->query($query);
+            $mysqli->close();
+            $dbpass = $res->fetch_assoc()["password"];
+
+            if ($dbpass == $password) {
+                return true;
+            }
+
+            return false;
+        }
+        return false;
     }
 }

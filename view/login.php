@@ -9,12 +9,14 @@
 </head>
 
 <body>
-    <form>
-        <input type="text" name="username" placeholder="username">
-        <input type="text" name="password" placeholder="password">
-        <input type="submit" name="flag" value="login">
-    </form>
-    <a href="index.php?flag=signup">sign up</a>
+    <?php
+
+    if (!isset($_SESSION["username"])) {
+        header("location:/store");
+    }
+
+    echo "<h1>welcome " . $_SESSION["username"] . "</h1>";
+    ?>
 </body>
 
 </html>
