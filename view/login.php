@@ -17,6 +17,6 @@
     echo "<h1>welcome " . $_SESSION["username"] . "</h1>";
     ?>
 </body>
-<a href="index.php?flag=close">sign up</a>
+<a href="index.php?flag=close">log out</a>
 
 </html>

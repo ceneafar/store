@@ -11,8 +11,8 @@ class controller
 
   static function login()
   {
-    $username = $_GET["username"];
-    $password = $_GET["password"];
+    $username = $_POST["username"];
+    $password = $_POST["password"];
     $model = new model();
     if ($model->checkLogin($username, $password) == true) {
       session_start();
@@ -31,9 +31,9 @@ class controller
 
   static function create()
   {
-    $user = $_GET["username"];
-    $pass1 = $_GET["password"];
-    $pass2 = $_GET["password2"];
+    $user = $_POST["username"];
+    $pass1 = $_POST["password"];
+    $pass2 = $_POST["password2"];
 
     $model = new model();
     // check if the username exist
@@ -49,6 +49,7 @@ class controller
     } else {
       header("Location: /store/index.php?flag=signup");
     }
+  
   }
 
   static function signup()
