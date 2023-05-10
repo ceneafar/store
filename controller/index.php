@@ -23,6 +23,12 @@ class controller
     }
   }
 
+  static function close()
+  {
+    session_destroy();
+    header("Location: /store");
+  }
+
   static function create()
   {
     $user = $_GET["username"];

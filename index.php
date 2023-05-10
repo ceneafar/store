@@ -8,6 +8,8 @@ if (isset($_GET["flag"]) && $_GET["flag"] == "signup") {
     controller::create();
 } elseif (isset($_GET["flag"]) && $_GET["flag"] == "login") {
     controller::login();
+} elseif (isset($_GET["flag"]) && $_GET["flag"] == "close") {
+    controller::close();
 } else {
     controller::index();
 }

@@ -14,9 +14,9 @@
     if (!isset($_SESSION["username"])) {
         header("location:/store");
     }
-
     echo "<h1>welcome " . $_SESSION["username"] . "</h1>";
     ?>
 </body>
+<a href="index.php?flag=close">sign up</a>
 
 </html>
