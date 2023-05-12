@@ -14,5 +14,30 @@ body {
     padding: 30px;
     border-radius: 5px;
     width: 20%;
-    height: 200px;
+    height: 250px;
+}
+
+.input {
+    border: none;
+    border-radius: 3px;
+    width: 200px;
+    height: 30px;
+    padding: 7px;
+}
+
+.buttons {
+    border: none;
+    background-color: gray;
+    width: 70px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    border-radius: 3px;
+}
+
+.buttons:hover {
+    color: whitesmoke;
 }
