@@ -1,22 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+require_once("layouts/header.php");
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+if (!isset($_SESSION["username"])) {
+    header("location:/store");
+}
 
-<body>
-    <?php
+echo "<h1>welcome " . $_SESSION["username"] . "</h1>";
 
-    if (!isset($_SESSION["username"])) {
-        header("location:/store");
-    }
-    echo "<h1>welcome " . $_SESSION["username"] . "</h1>";
-    ?>
-</body>
+?>
+
 <a href="index.php?flag=close">log out</a>
 
-</html>
+<?php
+require_once("layouts/footer.php");
+?>
