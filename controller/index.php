@@ -17,6 +17,7 @@ class controller
     if ($model->checkLogin($username, $password) == true) {
       session_start();
       $_SESSION["username"] = $username;
+      $_SESSION["content"] = "";
       require_once("./view/login.php");
     } else {
       header("Location: /store");
@@ -49,7 +50,6 @@ class controller
     } else {
       header("Location: /store/index.php?flag=signup");
     }
-  
   }
 
   static function signup()

@@ -57,10 +57,10 @@ body {
 
 .bar ul {
     padding: 0;
-    list-style: none;    
+    list-style: none;
     margin: 0;
-    
-    display: flex;    
+
+    display: flex;
     justify-content: space-around;
     align-items: center;
 }
@@ -73,7 +73,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 10px;
-    
+
 }
 
 .bar a:hover {
@@ -114,4 +114,10 @@ body {
     grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
     grid-template-rows: 5% 95%;
     background-color: aqua;
+}
+
+.content {
+    background-color: orange;
+    grid-column: 2 / 6;
+    grid-row: 2 / 6;
 }

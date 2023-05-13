@@ -1,8 +1,13 @@
 <?php
 
 require_once("controller/index.php");
+require_once("controller/navigation.php");
 
-if (isset($_GET["flag"]) && $_GET["flag"] == "signup") {
+if (isset($_GET["nav"]) && $_GET["nav"] == "prop1") {
+    navigation::prop1();
+} else if (isset($_GET["nav"]) && $_GET["nav"] == "prop2") {
+    navigation::prop2();
+} else if (isset($_GET["flag"]) && $_GET["flag"] == "signup") {
     controller::signup();
 } elseif (isset($_POST["flag"]) && $_POST["flag"] == "create") {
     controller::create();

@@ -23,10 +23,10 @@ if (!isset($_SESSION["username"])) {
 
     <nav class="menu">
         <ul>
-            <a href="#">
+            <a href="index.php?nav=prop1">
                 <li>prop1</li>
             </a>
-            <a href="#">
+            <a href="index.php?nav=prop2">
                 <li>prop2</li>
             </a>
             <a href="#">
@@ -37,6 +37,10 @@ if (!isset($_SESSION["username"])) {
             </a>
         </ul>
     </nav>
+
+    <div class="content">
+        <?php echo $_SESSION["content"]; ?>
+    </div>
 </div>
 
 <?php
