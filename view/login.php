@@ -38,8 +38,8 @@ if (!isset($_SESSION["username"])) {
         </ul>
     </nav>
 
-    <div class="content">
-        <?php echo $_SESSION["content"]; ?>
+    <div id="content" class="content">
+        <?php //echo $_SESSION["content"]; ?>
     </div>
 </div>
 
