@@ -49,6 +49,7 @@ class controller
       $model->create($user, $pass1, $pass2);
       header("Location: /store");
     } else {
+      setcookie("message", "username or password invalid");
       header("Location: /store/index.php?flag=signup");
     }
   }
