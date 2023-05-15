@@ -3,6 +3,7 @@ require_once("layouts/header.php");
 ?>
 
 <form method="post" class="form">
+    <h1>log in</h1>
     <input class="input" type="text" name="username" placeholder="username">
     <input class="input" type="text" name="password" placeholder="password">
     <?php

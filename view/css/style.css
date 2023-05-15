@@ -16,7 +16,7 @@ body {
     padding: 30px;
     border-radius: 5px;
     width: 20%;
-    height: 250px;
+    height: 300px;
 }
 
 .input {
@@ -122,6 +122,10 @@ body {
     grid-row: 2 / 6;
 }
 
-span{
+span {
     color: red;
+}
+
+h1 {
+    color: whitesmoke;
 }
