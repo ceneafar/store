@@ -20,6 +20,7 @@ class controller
       $_SESSION["content"] = "";
       require_once("./view/login.php");
     } else {
+      setcookie("message", "username or password invalid");
       header("Location: /store");
     }
   }
