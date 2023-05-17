@@ -18,5 +18,11 @@ class ProductsController
     {
         $result = $this->productModel->getProducts();
         $this->productView->showProducts($result);
+        $this->productView->createProduct();
+    }
+
+    public function create_product(){
+        $this->productModel->createProducts();
+        header("Location: /store/index.php?nav=prop1");
     }
 }

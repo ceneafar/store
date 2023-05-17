@@ -30,4 +30,14 @@ class Products extends data
 
         return $this->array;
     }
+
+    public function createProducts()
+    {
+        $name = $_POST["name"];
+        $returnable = $_POST["returnable"];
+        $initial_stock = $_POST["initial_stock"];
+
+        $query = "INSERT INTO products (name, returnable, initial_stock) VALUES ('" . $name . "', '" . $returnable . "', '" . $initial_stock . "')";
+        $this->connection->query($query);        
+    }
 }
