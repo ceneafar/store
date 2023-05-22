@@ -46,7 +46,7 @@ class controller
     $user_existence = $obj->num_rows;
 
     if ($pass1 == $pass2 && $user_existence == 0) {
-      $model->create($user, $pass1, $pass2);
+      $model->create($user, $pass1);
       header("Location: /store");
     } else {
       setcookie("message", "username or password invalid");

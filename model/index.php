@@ -14,13 +14,12 @@ class model extends data
         return new mysqli($hostname, $username, $password, $dbname);
     }
 
-    public function create($user, $pass1, $pass2)
+    public function create($user, $pass1)
     {
         $mysqli = $this->connection();
         $query = "insert into login (username, password) values ('" . $user . "','" .  $pass1 . "')";
         $res = $mysqli->query($query);
-        $mysqli->close();
-        return $res;
+        $mysqli->close();        
     }
 
     public function checkUser($user)
@@ -46,8 +45,6 @@ class model extends data
             if ($dbpass == $password) {
                 return true;
             }
-
-            return false;
         }
         return false;
     }
