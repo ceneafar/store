@@ -5,7 +5,7 @@ require_once("layouts/header.php");
 <form method="post" class="form">
     <h1>log in</h1>
     <input class="input" type="text" name="username" placeholder="username">
-    <input class="input" type="text" name="password" placeholder="password">
+    <input class="input" type="password" name="password" placeholder="password">
     <?php
     if (isset($_COOKIE["message"])) {
         echo "<span>" . $_COOKIE["message"] . "</span>";
