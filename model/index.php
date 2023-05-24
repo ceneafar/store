@@ -17,9 +17,19 @@ class model extends data
     public function create($user, $pass1)
     {
         $mysqli = $this->connection();
-        $query = "insert into login (username, password) values ('" . $user . "','" .  $pass1 . "')";
-        $res = $mysqli->query($query);
-        $mysqli->close();        
+        $query0 = "insert into login (username, password) values ('" . $user . "','" .  $pass1 . "')";
+        $query1 = "create database store_" . $user;
+        $query2 = "use store_" . $user;
+        $query3 = "create table " . $user . "_products (
+            id int primary key not null auto_increment, 
+            name varchar(255)            
+        )";
+
+        $mysqli->query($query0);
+        $mysqli->query($query1);
+        $mysqli->query($query2);
+        $mysqli->query($query3);
+        $mysqli->close();
     }
 
     public function checkUser($user)
