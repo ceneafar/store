@@ -23,8 +23,8 @@ if (!isset($_SESSION["username"])) {
 
     <nav class="menu">
         <ul>
-            <a href="index.php?nav=prop1">
-                <li>prop1</li>
+            <a href="index.php?nav=products">
+                <li>Products</li>
             </a>
             <a href="index.php?nav=prop2">
                 <li>prop2</li>

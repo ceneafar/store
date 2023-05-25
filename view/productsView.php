@@ -12,11 +12,11 @@ class productsView
         echo "</ul>";
     }
 
-    public function createProduct(){
+    public function createProduct()
+    {
         echo "<form action='index.php?product=create' method='post' id='createProduct'>";
         echo "<input type='text' name='name'>";
         echo "<input type='submit' value='create product'>";
         echo "</form>";
     }
-
 }

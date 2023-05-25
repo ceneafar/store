@@ -5,7 +5,7 @@ require_once("controller/productsController.php");
 class navigation
 {
 
-     static function prop1()
+     static function products()
     {
         $products = new ProductsController();
         session_start();
