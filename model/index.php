@@ -1,22 +1,11 @@
 <?php
-require_once("secret.php");
-class model extends data
+require_once("databasedata.php");
+class model extends DatabaseData
 {
-
-    private function connection()
-    {
-        $data = new data();
-        $hostname = $data->get_hostname();
-        $username = $data->get_username();
-        $password = $data->get_password();
-        $dbname = $data->get_dbname();
-
-        return new mysqli($hostname, $username, $password, $dbname);
-    }
 
     public function create($user, $pass1)
     {
-        $mysqli = $this->connection();
+        $mysqli = $this->getConnection();
         $query0 = "insert into login (username, password) values ('" . $user . "','" .  $pass1 . "')";
         $query1 = "create database store_" . $user;
         $query2 = "use store_" . $user;
@@ -34,10 +23,11 @@ class model extends data
 
     public function checkUser($user)
     {
-        $mysqli = $this->connection();
+        $mysqli = $this->getConnection();
         $query = "select username from login where username='" . $user . "'";
         $res = $mysqli->query($query);
         $mysqli->close();
+
         return $res;
     }
 
@@ -46,10 +36,11 @@ class model extends data
         $exist = $this->checkUser($username)->num_rows ? true : false;
 
         if ($exist) {
-            $mysqli = $this->connection();
+            $mysqli = $this->getConnection();
             $query = "select password from login where username='" . $username . "'";
             $res = $mysqli->query($query);
             $mysqli->close();
+
             $dbpass = $res->fetch_assoc()["password"];
 
             if ($dbpass == $password) {

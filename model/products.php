@@ -1,21 +1,10 @@
 <?php
-require_once('secret.php');
+require_once('databasedata.php');
 
-class Products extends data
+class Products extends DatabaseData
 {
     private $connection;
     private $array = array();
-
-    public function __construct()
-    {
-        $data = new data();
-
-        $host = $data->get_hostname();
-        $user = $data->get_username();
-        $pass = $data->get_password();
-        $dbname = $data->get_dbname();
-        $this->connection = new mysqli($host, $user, $pass, $dbname);
-    }
 
     public function getProducts()
     {
