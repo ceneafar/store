@@ -1,7 +1,7 @@
 <?php
 require_once('secret.php');
 
-class Products extends data
+class Clients extends data
 {
     private $connection;
     private $array = array();
@@ -17,11 +17,10 @@ class Products extends data
         $this->connection = new mysqli($host, $user, $pass, $dbname);
     }
 
-    public function getProducts()
+    public function getClients()
     {
-
         $query0  = "use store_" . $_SESSION['username'];
-        $query1 = "select * from " . $_SESSION['username'] . "_products";
+        $query1 = "select * from " . $_SESSION['username'] . "_clients";
         $this->connection->query($query0);
         $result = $this->connection->query($query1);
 
@@ -32,15 +31,14 @@ class Products extends data
         return $this->array;
     }
 
-    public function createProducts()
+    public function createClients()
     {
         $name = $_POST["name"];
-        //$returnable = $_POST["returnable"];
-        //$initial_stock = $_POST["initial_stock"];
+
 
         session_start();
         $query0  = "use store_" . $_SESSION['username'];
-        $query1 = "INSERT INTO " . $_SESSION['username'] . "_products (name) VALUES ('" . $name . "')";
+        $query1 = "INSERT INTO " . $_SESSION['username'] . "_clients (name) VALUES ('" . $name . "')";
         $this->connection->query($query0);
         $this->connection->query($query1);
     }

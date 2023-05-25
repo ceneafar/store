@@ -10,8 +10,8 @@ if (isset($_GET["product"]) && $_GET["product"] == "create") {
     $products->create_product();
 } else if (isset($_GET["nav"]) && $_GET["nav"] == "products") {
     navigation::products();
-} else if (isset($_GET["nav"]) && $_GET["nav"] == "prop2") {
-    navigation::prop2();
+} else if (isset($_GET["nav"]) && $_GET["nav"] == "clients") {
+    navigation::clients();
 } else if (isset($_GET["flag"]) && $_GET["flag"] == "signup") {
     controller::signup();
 } elseif (isset($_POST["flag"]) && $_POST["flag"] == "create") {
