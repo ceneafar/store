@@ -1,25 +1,25 @@
 <?php
 
-require_once("controller/index.php");
-require_once("controller/navigation.php");
-require_once("controller/productsController.php");
+require_once("controller/usercontroller.php");
+require_once("controller/navigationController.php");
+require_once("controller/productController.php");
 
-$products = new ProductsController();
+$products = new ProductController();
 
 if (isset($_GET["product"]) && $_GET["product"] == "create") {
     $products->create_product();
 } else if (isset($_GET["nav"]) && $_GET["nav"] == "products") {
-    navigation::products();
+    navigationController::products();
 } else if (isset($_GET["nav"]) && $_GET["nav"] == "clients") {
-    navigation::clients();
+    navigationController::clients();
 } else if (isset($_GET["flag"]) && $_GET["flag"] == "signup") {
-    controller::signup();
+    userController::showSignupView();
 } elseif (isset($_POST["flag"]) && $_POST["flag"] == "create") {
-    controller::create();
+    userController::createUser();
 } elseif (isset($_POST["flag"]) && $_POST["flag"] == "login") {
-    controller::login();
+    userController::loginUser();
 } elseif (isset($_GET["flag"]) && $_GET["flag"] == "close") {
-    controller::close();
+    userController::closeSession();
 } else {
-    controller::index();
+    userController::showLoginView();
 }

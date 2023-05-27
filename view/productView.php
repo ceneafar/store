@@ -1,12 +1,12 @@
 <?php
 
-class productsView
+class ProductView
 {
 
-    public function showProducts($list)
+    public function showProducts($productsList)
     {
         echo "<ul id='product' class='content'>";
-        foreach ($list as $product) {
+        foreach ($productsList as $product) {
             echo "<li>" . $product . "</li>";
         }
         echo "</ul>";
@@ -14,7 +14,7 @@ class productsView
 
     public function createProduct()
     {
-        echo "<form action='index.php?product=create' method='post' id='createProduct'>";
+        echo "<form id='createProduct' action='index.php?product=create' method='post'>";
         echo "<input type='text' name='name'>";
         echo "<input type='submit' value='create product'>";
         echo "</form>";

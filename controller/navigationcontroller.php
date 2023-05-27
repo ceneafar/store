@@ -1,13 +1,13 @@
 <?php
-require_once("controller/index.php");
-require_once("controller/productsController.php");
+require_once("controller/usercontroller.php");
+require_once("controller/productcontroller.php");
 
-class navigation
+class navigationController
 {
 
     static function products()
     {
-        $products = new ProductsController();
+        $products = new productController();
         session_start();
         $products->index();
         $_SESSION["content"] = "<p>prop1</p>";

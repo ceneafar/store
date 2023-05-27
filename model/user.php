@@ -3,7 +3,6 @@ require_once("databasedata.php");
 
 class User extends DatabaseData
 {
-
     public function createUser($username, $password)
     {
         $mysqli = $this->getConnection();
@@ -51,7 +50,7 @@ class User extends DatabaseData
         return false;
     }
 
-    private function checkUserExistence($username)
+    public function checkUserExistence($username)
     {
         $mysqli = $this->getConnection();
         $query = "SELECT username FROM login WHERE username='" . $username . "'";
