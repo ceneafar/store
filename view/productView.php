@@ -2,7 +2,6 @@
 
 class ProductView
 {
-
     public function showProducts($productsList)
     {        
         echo "<ul id='product' class='content'>";

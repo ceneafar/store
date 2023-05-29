@@ -5,6 +5,7 @@ class CustomerView
     public function showCustomers($customersList)
     {
         echo "<ul id='customer' class='content'>";
+        echo "<h2>Customers</h2>";
         foreach ($customersList as $customer) {
             echo "<li>" . $customer . "</li>";
         }
