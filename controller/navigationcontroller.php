@@ -1,24 +1,25 @@
 <?php
-require_once("controller/usercontroller.php");
+require_once("controller/customercontroller.php");
 require_once("controller/productcontroller.php");
 
 class navigationController
 {
 
-    static function products()
+    static function product()
     {
         $products = new productController();
         session_start();
-        $products->index();
-        $_SESSION["content"] = "<p>prop1</p>";
+        $products->showProducts();
 
         require_once("./view/login.php");
     }
 
-    static function clients()
+    static function customer()
     {
+        $customer = new CustomerController();
         session_start();
-        $_SESSION["content"] = "<p>prop2</p>";
+        $customer->showCustomers();
+        
         require_once("./view/login.php");
     }
 }

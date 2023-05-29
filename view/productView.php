@@ -4,8 +4,9 @@ class ProductView
 {
 
     public function showProducts($productsList)
-    {
+    {        
         echo "<ul id='product' class='content'>";
+        echo "<h2>Products</h2>";
         foreach ($productsList as $product) {
             echo "<li>" . $product . "</li>";
         }

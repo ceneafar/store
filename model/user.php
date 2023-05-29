@@ -53,8 +53,8 @@ class User extends DatabaseData
     public function checkUserExistence($username)
     {
         $mysqli = $this->getConnection();
-        $query = "SELECT username FROM login WHERE username='" . $username . "'";
-        $result = $mysqli->query($query)->num_rows ? true : false;
+        $query1 = "SELECT username FROM login WHERE username='" . $username . "'";
+        $result = $mysqli->query($query1)->num_rows == 1 ? true : false;
         $mysqli->close();
 
         return $result;

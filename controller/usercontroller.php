@@ -42,7 +42,7 @@ class userController
     // check if the username exist
     $userExistence = $user->checkUserExistence($username);
 
-    if ($password1 == $password2 && $userExistence) {
+    if ($password1 == $password2 && !$userExistence) {
       $user->createUser($username, $password1);
       header("Location: /store");
     } else {

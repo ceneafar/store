@@ -7,11 +7,11 @@ require_once("controller/productController.php");
 $products = new ProductController();
 
 if (isset($_GET["product"]) && $_GET["product"] == "create") {
-    $products->create_product();
+    $products->createProduct();
 } else if (isset($_GET["nav"]) && $_GET["nav"] == "products") {
-    navigationController::products();
+    navigationController::product();
 } else if (isset($_GET["nav"]) && $_GET["nav"] == "clients") {
-    navigationController::clients();
+    navigationController::customer();
 } else if (isset($_GET["flag"]) && $_GET["flag"] == "signup") {
     userController::showSignupView();
 } elseif (isset($_POST["flag"]) && $_POST["flag"] == "create") {

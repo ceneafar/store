@@ -5,7 +5,7 @@ require_once("layouts/header.php");
 <form action="./index.php" method="post" class="form">
     <h1>create account</h1>
     <input class="input" type="text" name="username" placeholder="username">
-    <input class="input" id='pass1' type="password" name="password" placeholder="password">
+    <input class="input" id='pass1' type="password" name="password1" placeholder="password">
     <input class="input" id='pass2' type="password" name="password2" placeholder="repeat password">
     <label for="checkbox1"><input type="checkbox" id="checkbox1" onclick="showPass1()">show</label>
     <?php
