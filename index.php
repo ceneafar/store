@@ -2,12 +2,16 @@
 
 require_once("controller/usercontroller.php");
 require_once("controller/navigationController.php");
-require_once("controller/productController.php");
+require_once("controller/productcontroller.php");
+require_once("controller/customercontroller.php");
 
-$products = new ProductController();
+$product = new ProductController();
+$customer = new CustomerController();
 
-if (isset($_GET["product"]) && $_GET["product"] == "create") {
-    $products->createProduct();
+if (isset($_GET["product"]) && $_GET["product"] == "createProduct") {
+    $product->createProduct();
+} else if (isset($_GET["customer"]) && $_GET["customer"] == "createCustomer") {
+    $customer->createCustomer();
 } else if (isset($_GET["nav"]) && $_GET["nav"] == "products") {
     navigationController::product();
 } else if (isset($_GET["nav"]) && $_GET["nav"] == "clients") {

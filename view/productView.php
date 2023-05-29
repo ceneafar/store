@@ -14,7 +14,7 @@ class ProductView
 
     public function createProduct()
     {
-        echo "<form id='createProduct' action='index.php?product=create' method='post'>";
+        echo "<form id='createProduct' action='index.php?product=createProduct' method='post'>";
         echo "<input type='text' name='name'>";
         echo "<input type='submit' value='create product'>";
         echo "</form>";

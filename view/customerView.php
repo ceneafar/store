@@ -14,7 +14,7 @@ class CustomerView
 
     public function createCustomer()
     {
-        echo "<form id='createCustomer' action='index.php?customer=create' method='post'>";
+        echo "<form id='createCustomer' action='index.php?customer=createCustomer' method='post'>";
         echo "<input type='text' name='name'>";
         echo "<input type='submit' value='create customer'>";
         echo "</form>";
