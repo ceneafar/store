@@ -26,8 +26,8 @@ if (!isset($_SESSION["username"])) {
             <a href="index.php?nav=products">
                 <li>Products</li>
             </a>
-            <a href="index.php?nav=clients">
-                <li>Clients</li>
+            <a href="index.php?nav=customers">
+                <li>Customers</li>
             </a>
             <a href="#">
                 <li>prop3</li>

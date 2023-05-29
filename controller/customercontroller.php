@@ -23,6 +23,6 @@ class CustomerController
     public function createCustomer()
     {
         $this->customerModel->createCustomer();
-        header("Location: /store/index.php?nav=clients");
+        header("Location: /store/index.php?nav=customers");
     }
 }

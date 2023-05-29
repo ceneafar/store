@@ -14,7 +14,7 @@ if (isset($_GET["product"]) && $_GET["product"] == "createProduct") {
     $customer->createCustomer();
 } else if (isset($_GET["nav"]) && $_GET["nav"] == "products") {
     navigationController::product();
-} else if (isset($_GET["nav"]) && $_GET["nav"] == "clients") {
+} else if (isset($_GET["nav"]) && $_GET["nav"] == "customers") {
     navigationController::customer();
 } else if (isset($_GET["flag"]) && $_GET["flag"] == "signup") {
     userController::showSignupView();
