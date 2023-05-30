@@ -4,12 +4,28 @@ class CustomerView
 {
     public function showCustomers($customersList)
     {
-        echo "<ul id='customer' class='content'>";
+        echo "<div id='customer' class='content'>";
         echo "<h2>Customers</h2>";
+        echo "<table>";
+        echo "<tr>";
+        echo "<th>name</th>";
+        echo "<th>lastname</th>";
+        echo "<th>address</th>";
+        echo "<th>phone</th>";
+        echo "<th>email</th>";
+        echo "</tr>";
         foreach ($customersList as $customer) {
-            echo "<li>" . $customer . "</li>";
+            echo "<tr>";
+            echo "<td>" . $customer[0] . "</td>";
+            echo "<td>" . $customer[1] . "</td>";
+            echo "<td>" . $customer[2] . "</td>";
+            echo "<td>" . $customer[3] . "</td>";
+            echo "<td>" . $customer[4] . "</td>";
+            echo "</tr>";
         }
-        echo "</ul>";
+        echo "</table>";
+        echo "<hr>";
+        echo "</div>";
     }
 
     public function createCustomer()

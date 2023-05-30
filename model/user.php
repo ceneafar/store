@@ -18,8 +18,12 @@ class User extends DatabaseData
         )";
 
         $query4 = "CREATE TABLE " . $username . "_customers (
-            id int primary key not null auto_increment, 
-            name varchar(255)
+            id int primary key not null auto_increment,
+            name varchar(255),
+            lastname varchar(255),
+            address varchar(255),
+            phone varchar(255),
+            email varchar(255)   
         )";
 
         $mysqli->query($query0);
