@@ -8,6 +8,7 @@ class CustomerView
         echo "<h2>Customers</h2>";
         echo "<table>";
         echo "<tr>";
+        echo "<th>id</th>";
         echo "<th>name</th>";
         echo "<th>lastname</th>";
         echo "<th>address</th>";
@@ -21,6 +22,7 @@ class CustomerView
             echo "<td>" . $customer[2] . "</td>";
             echo "<td>" . $customer[3] . "</td>";
             echo "<td>" . $customer[4] . "</td>";
+            echo "<td>" . $customer[5] . "</td>";
             echo "</tr>";
         }
         echo "</table>";

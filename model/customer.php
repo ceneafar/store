@@ -16,7 +16,7 @@ class Customer extends Databasedata
         $result = $mysqli->query($query1);
 
         while ($row = $result->fetch_assoc()) {
-            $arr = [$row['name'], $row['lastname'], $row['address'], $row['phone'], $row['email']];
+            $arr = [$row['id'], $row['name'], $row['lastname'], $row['address'], $row['phone'], $row['email']];
             array_push($this->customersList, $arr);
         }
         
