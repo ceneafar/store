@@ -10,6 +10,12 @@ $customer = new CustomerController();
 
 if (isset($_GET["product"]) && $_GET["product"] == "createProduct") {
     $product->createProduct();
+} else if (isset($_GET["product"]) && $_GET["product"] == "editProduct") {
+    if (isset($_POST['editProductBtn'])) {
+        $product->editProduct();
+    } else {
+        $product->deleteProduct();
+    }
 } else if (isset($_GET["customer"]) && $_GET["customer"] == "createCustomer") {
     $customer->createCustomer();
 } else if (isset($_GET["nav"]) && $_GET["nav"] == "products") {

@@ -20,6 +20,8 @@ class Product extends DatabaseData
             array_push($this->productsList, $arr);
         }
 
+        $mysqli->close();
+
         return $this->productsList;
     }
 
@@ -55,5 +57,50 @@ class Product extends DatabaseData
 
         $mysqli->query($query0);
         $mysqli->query($query1);
+
+        $mysqli->close();
+    }
+
+    public function editProduct()
+    {
+        $id = $_POST["idProduct"];
+        $array = array(
+            'productName' => $_POST["productName"],
+            'productBrand' => $_POST["productBrand"],
+            'measurementUnit' => $_POST["measurementUnit"],
+            'measurementValue' => $_POST["measurementValue"],
+            'propertyType' => $_POST["propertyType"],
+            'propertyValue' => $_POST["propertyValue"]
+        );
+
+        $mysqli = $this->getConnection();
+        session_start();
+
+        $query0  = "USE store_{$_SESSION['username']}";
+        $mysqli->query($query0);
+
+        foreach ($array as $key => $value) {
+            $query1 =  "UPDATE {$_SESSION['username']}_products SET $key='$value' WHERE id=$id";
+            $mysqli->query($query1);
+        }
+
+        $mysqli->close();
+    }
+
+    public function deleteProduct()
+    {
+        $id = $_POST["idProduct"];
+
+        $mysqli = $this->getConnection();
+        session_start();
+
+        $query0  = "USE store_{$_SESSION['username']}";
+
+        $query1 = "DELETE FROM {$_SESSION['username']}_products WHERE id=$id";
+
+        $mysqli->query($query0);
+        $mysqli->query($query1);
+
+        $mysqli->close();
     }
 }

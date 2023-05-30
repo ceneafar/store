@@ -15,16 +15,21 @@ class ProductView
         echo "<th>measurement value</th>";
         echo "<th>property type</th>";
         echo "<th>property value</th>";
+        echo "<th></th>";
         echo "</tr>";
         foreach ($productsList as $product) {
             echo "<tr>";
             echo "<td>" . $product[0] . "</td>";
-            echo "<td>" . $product[1] . "</td>";
-            echo "<td>" . $product[2] . "</td>";
-            echo "<td>" . $product[3] . "</td>";
-            echo "<td>" . $product[4] . "</td>";
-            echo "<td>" . $product[5] . "</td>";
-            echo "<td>" . $product[6] . "</td>";
+            echo "<form action='index.php?product=editProduct' method='post'>";
+            echo "<td><input type='text' name='productName' value='" . $product[1] . "'></td>";
+            echo "<td><input type='text' name='productBrand' value='" . $product[2] . "'></td>";
+            echo "<td><input type='text' name='measurementUnit' value='" . $product[3] . "'></td>";
+            echo "<td><input type='text' name='measurementValue' value='" . $product[4] . "'></td>";
+            echo "<td><input type='text' name='propertyType' value='" . $product[5] . "'></td>";
+            echo "<td><input type='text' name='propertyValue' value='" . $product[6] . "'></td>";
+            echo "<td><input type='submit' name='editProductBtn' value='edit'><input type='submit' name='deleteProductBtn' value='delete'></td>";
+            echo "<input hidden name='idProduct' value='" . $product[0] . "'>";
+            echo "</form>";
             echo "</tr>";
         }
         echo "</table>";
@@ -38,7 +43,7 @@ class ProductView
 
         echo "<label for='productName'>product name</label>";
         echo "<input id='productName' type='text' name='productName' placeholder='product name'>";
-        
+
         echo "<label for='productBrand'>brand</label>";
         echo "<input id='productBrand' type='text' name='productBrand' placeholder='brand'>";
 

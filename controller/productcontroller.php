@@ -25,4 +25,16 @@ class ProductController
         $this->productModel->createProduct();
         header("Location: /store/index.php?nav=products");
     }
+
+    public function editProduct()
+    {
+        $this->productModel->editProduct();
+        header("Location: /store/index.php?nav=products");
+    }
+
+    public function deleteProduct()
+    {
+        $this->productModel->deleteProduct();
+        header("Location: /store/index.php?nav=products");
+    }
 }
