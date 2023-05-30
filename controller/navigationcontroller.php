@@ -22,4 +22,10 @@ class navigationController
         
         require_once("./view/login.php");
     }
+
+    static function dashboard(){
+        session_start();
+        require_once("./view/login.php");
+    }
+
 }

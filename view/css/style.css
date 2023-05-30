@@ -49,39 +49,44 @@ body {
 }
 
 .bar {
-    background-color: green;
+    background-color: #333;
     grid-column: 1/6;
     grid-row: 1 / 2;
     padding: 0;
 }
 
-.bar ul {
+.sub-bar {
     padding: 0;
     list-style: none;
     margin: 0;
 
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+}
+
+.space-bar {
+    display: flex;
+    height: 5vh;
 }
 
 .bar a {
     text-decoration: none;
     color: whitesmoke;
-    background-color: royalblue;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
-
+    width: 60px;
 }
 
 .bar a:hover {
-    background-color: coral;
+    background-color: black;
+    color: white;
 }
 
 .menu {
-    background-color: olivedrab;
+    background-color: #333;
     grid-column: 1 / 2;
     grid-row: 2 / 3;
 }
@@ -94,9 +99,8 @@ body {
 .menu a {
     text-decoration: none;
     color: whitesmoke;
-    background-color: royalblue;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding: 10px;
     margin: 10px 0;
@@ -104,7 +108,8 @@ body {
 }
 
 .menu a:hover {
-    background-color: coral;
+    background-color: black;
+    color: white;
 }
 
 .container {
@@ -137,9 +142,10 @@ h1 {
 
 tr {
     background-color: grey;
-    
+
 }
 
-th, td{
+th,
+td {
     padding: 5px;
 }

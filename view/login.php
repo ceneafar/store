@@ -9,34 +9,39 @@ if (!isset($_SESSION["username"])) {
 <div class="container">
     <div class='bar'>
         <ul class='sub-bar'>
-            <a href="#">
-                <li>@<?php echo $_SESSION['username']; ?></li>
-            </a>
-            <a href="#">
-                <li>profile</li>
-            </a>
-            <a href="index.php?flag=close">
-                <li>log out</li>
-            </a>
+            <div class="space-bar">
+                <a href="#">
+                    <li>store</li>
+                </a>
+            </div>
+            <div class="space-bar">
+                <a href="#">
+                    <li><?php echo $_SESSION['username']; ?></li>
+                </a>
+                <a href="#">
+                    <li>profile</li>
+                </a>
+                <a href="index.php?flag=close">
+                    <li>log out</li>
+                </a>
+            </div>
         </ul>
     </div>
 
     <nav class="menu">
         <ul>
+            <a href="index.php?nav=dashboard">
+                <li><i class="fa fa-bar-chart"></i> Dashboard</li>
+            </a>
             <a href="index.php?nav=products">
-                <li>Products</li>
+                <li><i class="fa fa-cubes"></i> Products</li>
             </a>
             <a href="index.php?nav=customers">
-                <li>Customers</li>
-            </a>
-            <a href="#">
-                <li>prop3</li>
-            </a>
-            <a href="#">
-                <li>prop4</li>
+                <li><i class="fa fa-group"></i> Customers</li>
             </a>
         </ul>
     </nav>
+
 
     <div id="content" class="content"></div>
 </div>
