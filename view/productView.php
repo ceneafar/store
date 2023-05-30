@@ -4,12 +4,32 @@ class ProductView
 {
     public function showProducts($productsList)
     {
-        echo "<ul id='product' class='content'>";
+        echo "<div id='product' class='content'>";
         echo "<h2>Products</h2>";
+        echo "<table>";
+        echo "<tr>";
+        echo "<th>id</th>";
+        echo "<th>product name</th>";
+        echo "<th>product brand</th>";
+        echo "<th>measurement unit</th>";
+        echo "<th>measurement value</th>";
+        echo "<th>property type</th>";
+        echo "<th>property value</th>";
+        echo "</tr>";
         foreach ($productsList as $product) {
-            echo "<li>" . $product . "</li>";
+            echo "<tr>";
+            echo "<td>" . $product[0] . "</td>";
+            echo "<td>" . $product[1] . "</td>";
+            echo "<td>" . $product[2] . "</td>";
+            echo "<td>" . $product[3] . "</td>";
+            echo "<td>" . $product[4] . "</td>";
+            echo "<td>" . $product[5] . "</td>";
+            echo "<td>" . $product[6] . "</td>";
+            echo "</tr>";
         }
-        echo "</ul>";
+        echo "</table>";
+        echo "<hr>";
+        echo "</div>";
     }
 
     public function createProduct()
@@ -17,8 +37,8 @@ class ProductView
         echo "<form id='createProduct' action='index.php?product=createProduct' method='post'>";
 
         echo "<label for='productName'>product name</label>";
-        echo "<input id='productName' type='text' name='name' placeholder='product name'>";
-
+        echo "<input id='productName' type='text' name='productName' placeholder='product name'>";
+        
         echo "<label for='productBrand'>brand</label>";
         echo "<input id='productBrand' type='text' name='productBrand' placeholder='brand'>";
 

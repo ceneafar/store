@@ -14,7 +14,12 @@ class User extends DatabaseData
         // tables
         $query3 = "CREATE TABLE " . $username . "_products (
             id int primary key not null auto_increment, 
-            name varchar(255)            
+            productName varchar(255),
+            productBrand varchar(255),
+            measurementUnit varchar(255),
+            measurementValue varchar(255),
+            propertyType varchar(255),
+            propertyValue varchar(255)
         )";
 
         $query4 = "CREATE TABLE " . $username . "_customers (
@@ -23,7 +28,7 @@ class User extends DatabaseData
             lastname varchar(255),
             address varchar(255),
             phone varchar(255),
-            email varchar(255)   
+            email varchar(255)
         )";
 
         $mysqli->query($query0);
