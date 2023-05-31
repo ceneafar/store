@@ -13,17 +13,21 @@ if (isset($_GET["product"]) && $_GET["product"] == "createProduct") {
 } else if (isset($_GET["product"]) && $_GET["product"] == "editProduct") {
     if (isset($_POST['editProductBtn'])) {
         $product->editProduct();
-    } else {
+    } else if (isset($_POST['deleteProductBtn'])) {
         $product->deleteProduct();
     }
 } else if (isset($_GET["customer"]) && $_GET["customer"] == "createCustomer") {
     $customer->createCustomer();
-} else if (isset($_GET["nav"]) && $_GET["nav"] == "products") {
-    navigationController::product();
-} else if (isset($_GET["nav"]) && $_GET["nav"] == "customers") {
-    navigationController::customer();
-} else if (isset($_GET["nav"]) && $_GET["nav"] == "dashboard") {
-    navigationController::dashboard();
+} else if (isset($_GET["nav"])) {
+    if ($_GET["nav"] == "products") {
+        navigationController::product();
+    } else if ($_GET["nav"] == "customers") {
+        navigationController::customer();
+    } else if ($_GET["nav"] == "dashboard") {
+        navigationController::dashboard();
+    } else if ($_GET["nav"] == "currency") {
+        navigationController::currency();
+    }
 } else if (isset($_GET["flag"]) && $_GET["flag"] == "signup") {
     userController::showSignupView();
 } elseif (isset($_POST["flag"]) && $_POST["flag"] == "create") {

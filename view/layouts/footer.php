@@ -7,6 +7,8 @@
     customer1 = document.getElementById('customer');
     customer2 = document.getElementById('createCustomer');
 
+    currency = document.getElementById('currency');    
+
     if (product1 && product2) {
         collection.append(product1);
         collection.append(product2);
@@ -15,6 +17,10 @@
     if (customer1 && customer2) {
         collection.append(customer1);
         collection.append(customer2);
+    }
+
+    if (currency) {
+        collection.append(currency);        
     }
 </script>
 

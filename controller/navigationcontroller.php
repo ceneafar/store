@@ -1,6 +1,7 @@
 <?php
 require_once("controller/customercontroller.php");
 require_once("controller/productcontroller.php");
+require_once("controller/currencycontroller.php");
 
 class navigationController
 {
@@ -24,6 +25,13 @@ class navigationController
     }
 
     static function dashboard(){
+        session_start();
+        require_once("./view/login.php");
+    }
+
+    static function currency(){
+        $currency = new CurrencyController();
+        $currency->showCurrencyView();        
         session_start();
         require_once("./view/login.php");
     }
