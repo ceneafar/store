@@ -11,7 +11,7 @@ class User extends DatabaseData
         $query1 = "CREATE DATABASE store_" . $username;
         $query2 = "USE store_" . $username;
 
-        // tables
+        // table product
         $query3 = "CREATE TABLE " . $username . "_products (
             id int primary key not null auto_increment, 
             productName varchar(255),
@@ -22,6 +22,7 @@ class User extends DatabaseData
             propertyValue varchar(255)
         )";
 
+        // table customer
         $query4 = "CREATE TABLE " . $username . "_customers (
             id int primary key not null auto_increment,
             name varchar(255),
@@ -31,11 +32,19 @@ class User extends DatabaseData
             email varchar(255)
         )";
 
+        // table currency rate
+        $query5 = "CREATE TABLE " . $username . "_currency_rate (
+            id int primary key not null auto_increment,
+            date date,
+            rate dec(6,4) 
+        )";
+
         $mysqli->query($query0);
         $mysqli->query($query1);
         $mysqli->query($query2);
         $mysqli->query($query3);
         $mysqli->query($query4);
+        $mysqli->query($query5);
 
         $mysqli->close();
     }
