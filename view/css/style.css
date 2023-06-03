@@ -7,6 +7,13 @@ body {
     margin: 0;
 }
 
+input {
+    font-family: 'Ubuntu', sans-serif;
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+}
+
 .form {
     background-color: #333;
     display: flex;
@@ -148,4 +155,26 @@ tr {
 th,
 td {
     padding: 5px;
+}
+
+#supplier {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 100px;
+}
+
+#supplier form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#supplier div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px;
 }
