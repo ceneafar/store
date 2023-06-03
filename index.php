@@ -27,6 +27,8 @@ if (isset($_GET["product"]) && $_GET["product"] == "createProduct") {
         navigationController::dashboard();
     } else if ($_GET["nav"] == "currency") {
         navigationController::currency();
+    }else if ($_GET["nav"] == "supplier") {
+        navigationController::supplier();
     }
 } else if (isset($_GET["flag"]) && $_GET["flag"] == "signup") {
     userController::showSignupView();

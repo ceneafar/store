@@ -42,6 +42,9 @@ if (!isset($_SESSION["username"])) {
             <a href="index.php?nav=currency">
                 <li><i class="fa fa-money"></i> Currency</li>
             </a>
+            <a href="index.php?nav=supplier">
+                <li><i class="fa fa-money"></i> Suppliers</li>
+            </a>
         </ul>
     </nav>
 

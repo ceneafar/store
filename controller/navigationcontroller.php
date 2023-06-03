@@ -2,6 +2,7 @@
 require_once("controller/customercontroller.php");
 require_once("controller/productcontroller.php");
 require_once("controller/currencycontroller.php");
+require_once("controller/suppliercontroller.php");
 
 class navigationController
 {
@@ -36,4 +37,10 @@ class navigationController
         require_once("./view/login.php");
     }
 
+    static function supplier(){
+        $supplier =  new SupplierController();
+        $supplier->showSupplierView();
+        session_start();
+        require_once("./view/login.php");
+    }
 }

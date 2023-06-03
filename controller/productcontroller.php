@@ -34,7 +34,6 @@ class ProductController
 
     public function deleteProduct()
     {
-        $this->productModel->deleteProduct();
-        header("Location: /store/index.php?nav=products");
+        $this->productModel->deleteProduct();        
     }
 }
