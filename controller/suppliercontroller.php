@@ -17,6 +17,13 @@ class SupplierController
     public function showSupplierView()
     {
         $this->supplierView->showSupplierForm();
-        //header("Location: /store/index.php?nav=supplier");
+        $list  = $this->supplierModel->getSuppliers();
+        $this->supplierView->showSupplierList($list);
+    }
+
+    public function createSupplier()
+    {
+        $this->supplierModel->createSupplier();
+        header("Location: /store/index.php?nav=supplier");
     }
 }

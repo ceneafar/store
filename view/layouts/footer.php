@@ -10,6 +10,7 @@
     currency1 = document.getElementById('currency');
 
     supplier1 = document.getElementById('supplier');
+    supplier2 = document.getElementById('supplierList');
 
     if (product1 && product2) {
         collection.append(product1);
@@ -27,6 +28,7 @@
 
     if (supplier1) {
         collection.append(supplier1);
+        collection.append(supplier2);
     }
 </script>
 

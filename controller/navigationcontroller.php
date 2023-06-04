@@ -39,8 +39,9 @@ class navigationController
 
     static function supplier(){
         $supplier =  new SupplierController();
-        $supplier->showSupplierView();
         session_start();
+        $supplier->showSupplierView();
+        
         require_once("./view/login.php");
     }
 }

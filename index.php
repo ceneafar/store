@@ -4,9 +4,11 @@ require_once("controller/usercontroller.php");
 require_once("controller/navigationController.php");
 require_once("controller/productcontroller.php");
 require_once("controller/customercontroller.php");
+require_once("controller/suppliercontroller.php");
 
 $product = new ProductController();
 $customer = new CustomerController();
+$supplier = new SupplierController();
 
 if (isset($_GET["product"]) && $_GET["product"] == "createProduct") {
     $product->createProduct();
@@ -18,6 +20,8 @@ if (isset($_GET["product"]) && $_GET["product"] == "createProduct") {
     }
 } else if (isset($_GET["customer"]) && $_GET["customer"] == "createCustomer") {
     $customer->createCustomer();
+} else if (isset($_GET["supplier"]) && $_GET["supplier"] == "createSupplier") {
+    $supplier->createSupplier();
 } else if (isset($_GET["nav"])) {
     if ($_GET["nav"] == "products") {
         navigationController::product();

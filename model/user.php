@@ -39,12 +39,21 @@ class User extends DatabaseData
             rate dec(6,4) 
         )";
 
+        // table supplier
+
+        $query6 = "CREATE TABLE {$username}_suppliers (
+            id int primary key not null auto_increment,
+            supplierName varchar(255),
+            supplierDni varchar(255)
+        )";
+
         $mysqli->query($query0);
         $mysqli->query($query1);
         $mysqli->query($query2);
         $mysqli->query($query3);
         $mysqli->query($query4);
         $mysqli->query($query5);
+        $mysqli->query($query6);
 
         $mysqli->close();
     }
