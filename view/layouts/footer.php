@@ -13,6 +13,7 @@
     supplier2 = document.getElementById('supplierList');
 
     purchase1 = document.getElementById('purchase');
+    purchase2 = document.getElementById('purchaseList');
 
     if (product1 && product2) {
         collection.append(product1);
@@ -28,13 +29,14 @@
         collection.append(currency1);
     }
 
-    if (supplier1) {
+    if (supplier1 && supplier2) {
         collection.append(supplier1);
         collection.append(supplier2);
     }
 
-    if (purchase1) {
+    if (purchase1 && purchase2) {
         collection.append(purchase1);
+        collection.append(purchase2);
     }
 </script>
 

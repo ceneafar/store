@@ -18,12 +18,19 @@ class PurchaseController
         $this->productModel = new Product();
     }
 
-
     public function showPurchaseForm()
     {
         $productList  = $this->productModel->getProducts();
         $supplierList = $this->supplierModel->getSuppliers();
         
         $this->purchaseView->showPurchaseForm($supplierList, $productList);
+
+        $purchaseList = $this->purchaseModel->getPurchases();
+        $this->purchaseView->showPurcharses($purchaseList);
+    }
+
+    public function buyProduct(){
+        $this->purchaseModel->buyProduct();
+        header("Location: /store/index.php?nav=purchase");
     }
 }

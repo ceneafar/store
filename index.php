@@ -5,10 +5,12 @@ require_once("controller/navigationController.php");
 require_once("controller/productcontroller.php");
 require_once("controller/customercontroller.php");
 require_once("controller/suppliercontroller.php");
+require_once("controller/purchasecontroller.php");
 
 $product = new ProductController();
 $customer = new CustomerController();
 $supplier = new SupplierController();
+$purchase = new PurchaseController();
 
 if (isset($_GET["product"]) && $_GET["product"] == "createProduct") {
     $product->createProduct();
@@ -22,6 +24,8 @@ if (isset($_GET["product"]) && $_GET["product"] == "createProduct") {
     $customer->createCustomer();
 } else if (isset($_GET["supplier"]) && $_GET["supplier"] == "createSupplier") {
     $supplier->createSupplier();
+} else if (isset($_GET["purchase"]) && $_GET["purchase"] == "buyProduct") {
+    $purchase->buyProduct();
 } else if (isset($_GET["nav"])) {
     if ($_GET["nav"] == "products") {
         navigationController::product();
@@ -31,9 +35,9 @@ if (isset($_GET["product"]) && $_GET["product"] == "createProduct") {
         navigationController::dashboard();
     } else if ($_GET["nav"] == "currency") {
         navigationController::currency();
-    }else if ($_GET["nav"] == "supplier") {
+    } else if ($_GET["nav"] == "supplier") {
         navigationController::supplier();
-    }else if ($_GET["nav"] == "purchase") {
+    } else if ($_GET["nav"] == "purchase") {
         navigationController::purchase();
     }
 } else if (isset($_GET["flag"]) && $_GET["flag"] == "signup") {

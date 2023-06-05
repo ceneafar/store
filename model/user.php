@@ -47,6 +47,17 @@ class User extends DatabaseData
             supplierDni varchar(255)
         )";
 
+        // table purchase
+
+        $query7 = "CREATE TABLE {$username}_purchases (
+            id int primary key not null auto_increment,
+            supplier varchar(255),
+            product varchar(255),
+            quantityProduct varchar(255),
+            productPrice varchar(255),
+            total varchar(255)
+        )";
+
         $mysqli->query($query0);
         $mysqli->query($query1);
         $mysqli->query($query2);
@@ -54,6 +65,7 @@ class User extends DatabaseData
         $mysqli->query($query4);
         $mysqli->query($query5);
         $mysqli->query($query6);
+        $mysqli->query($query7);
 
         $mysqli->close();
     }

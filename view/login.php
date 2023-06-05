@@ -39,14 +39,16 @@ if (!isset($_SESSION["username"])) {
             <a href="index.php?nav=customers">
                 <li><i class="fa fa-group"></i> Customers</li>
             </a>
+            <!--
             <a href="index.php?nav=currency">
                 <li><i class="fa fa-money"></i> Currency</li>
             </a>
+            -->
             <a href="index.php?nav=supplier">
-                <li><i class="fa fa-money"></i> Suppliers</li>
+                <li><i class="fa fa-truck"></i> Suppliers</li>
             </a>
             <a href="index.php?nav=purchase">
-                <li><i class="fa fa-money"></i> Purchase</li>
+                <li><i class="fa fa-file-text-o"></i> Purchase</li>
             </a>
         </ul>
     </nav>
