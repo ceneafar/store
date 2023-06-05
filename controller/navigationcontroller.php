@@ -3,6 +3,7 @@ require_once("controller/customercontroller.php");
 require_once("controller/productcontroller.php");
 require_once("controller/currencycontroller.php");
 require_once("controller/suppliercontroller.php");
+require_once("controller/purchasecontroller.php");
 
 class navigationController
 {
@@ -21,27 +22,39 @@ class navigationController
         $customer = new CustomerController();
         session_start();
         $customer->showCustomers();
-        
+
         require_once("./view/login.php");
     }
 
-    static function dashboard(){
+    static function dashboard()
+    {
         session_start();
         require_once("./view/login.php");
     }
 
-    static function currency(){
+    static function currency()
+    {
         $currency = new CurrencyController();
-        $currency->showCurrencyView();        
+        $currency->showCurrencyView();
         session_start();
         require_once("./view/login.php");
     }
 
-    static function supplier(){
+    static function supplier()
+    {
         $supplier =  new SupplierController();
         session_start();
         $supplier->showSupplierView();
-        
+
+        require_once("./view/login.php");
+    }
+
+    static function purchase()
+    {
+        $purchase =  new PurchaseController();
+        session_start();
+        $purchase->showPurchaseForm();
+
         require_once("./view/login.php");
     }
 }

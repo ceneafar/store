@@ -12,6 +12,8 @@
     supplier1 = document.getElementById('supplier');
     supplier2 = document.getElementById('supplierList');
 
+    purchase1 = document.getElementById('purchase');
+
     if (product1 && product2) {
         collection.append(product1);
         collection.append(product2);
@@ -29,6 +31,10 @@
     if (supplier1) {
         collection.append(supplier1);
         collection.append(supplier2);
+    }
+
+    if (purchase1) {
+        collection.append(purchase1);
     }
 </script>
 
