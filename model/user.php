@@ -51,8 +51,8 @@ class User extends DatabaseData
 
         $query7 = "CREATE TABLE {$username}_purchases (
             id int primary key not null auto_increment,
+            idProduct varchar(255),
             supplier varchar(255),
-            product varchar(255),
             quantityProduct varchar(255),
             productPrice varchar(255),
             total varchar(255)

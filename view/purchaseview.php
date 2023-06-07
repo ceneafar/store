@@ -27,13 +27,12 @@ class purchaseView
                 <option>- - -</option>";
         foreach ($productList as $product) {
             echo "
-            <option value='$product[0] $product[1] $product[2]'>
+            <option value='$product[0]'>
                 $product[0] $product[1] $product[2]
-            </option>
+            </option>            
             ";
         }
         echo "</select>
-        
             <label for='productQuantity'>quantity</label>
             <input id='productQuantity' name='productQuantity' type='text'>
 
@@ -53,8 +52,8 @@ class purchaseView
             <table>
                 <tr>
                     <th>id</th>
+                    <th>idProduct</th>
                     <th>supplier</th>
-                    <th>product</th>
                     <th>quantity</th>
                     <th>price</th>
                     <th>total</th>

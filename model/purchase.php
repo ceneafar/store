@@ -8,7 +8,7 @@ class Purchase extends DatabaseData
     public function buyProduct()
     {
         $supplier = $_POST['supplier'];
-        $product = $_POST['product'];
+        $idProduct = $_POST['product'];
         $productQuantity = $_POST['productQuantity'];
         $productPrice = $_POST['productPrice'];
         $total = intval($productQuantity) * floatval($productPrice);
@@ -20,13 +20,13 @@ class Purchase extends DatabaseData
         $query0 = "USE store_{$_SESSION['username']}";
         $query1 = "INSERT INTO {$_SESSION['username']}_purchases (
             supplier,
-            product,
+            idProduct,
             quantityProduct,
             productPrice,
             total
         ) VALUES (
             '$supplier',
-            '$product',
+            '$idProduct',
             '$productQuantity',
             '$productPrice',
             '$total'
@@ -49,7 +49,7 @@ class Purchase extends DatabaseData
         $result = $mysqli->query($query1);
 
         while ($row = $result->fetch_assoc()) {
-            $arr = [$row['id'], $row['supplier'], $row['product'], $row['quantityProduct'], $row['productPrice'], $row['total']];
+            $arr = [$row['id'], $row['idProduct'], $row['supplier'], $row['quantityProduct'], $row['productPrice'], $row['total']];
             array_push($this->purchaseList, $arr);
         }
 
