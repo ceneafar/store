@@ -16,7 +16,17 @@ class Product extends DatabaseData
         $result = $mysqli->query($query1);
 
         while ($row = $result->fetch_assoc()) {
-            $arr = [$row['id'], $row['productName'], $row['productBrand'], $row['measurementUnit'], $row['measurementValue'], $row['propertyType'], $row['propertyValue'], $row['quantity'], $row['date']];
+            $arr = [
+                $row['id'],
+                $row['productName'],
+                $row['productBrand'],
+                $row['measurementUnit'],
+                $row['measurementValue'],
+                $row['propertyType'],
+                $row['propertyValue'],
+                $row['quantity'],
+                $row['date']
+            ];
             array_push($this->productsList, $arr);
         }
 

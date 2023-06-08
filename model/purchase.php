@@ -31,11 +31,19 @@ class Purchase extends DatabaseData
             '$productPrice',
             '$total'
         )";
+        $query2 = "SELECT * FROM {$_SESSION['username']}_products WHERE id='$idProduct'";
+
 
         $mysqli->query($query0);
         $mysqli->query($query1);
+        $quantity = floatval($mysqli->query($query2)->fetch_assoc()['quantity']);
 
-        $mysqli->close();
+        $quantity1 = $quantity + floatval($productQuantity);
+                
+        $query3 = "UPDATE {$_SESSION['username']}_products SET quantity='$quantity1' WHERE id='$idProduct'";
+        $mysqli->query($query3);
+
+        $mysqli->close();        
     }
 
     public function getPurchases()
