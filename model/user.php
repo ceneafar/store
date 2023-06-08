@@ -19,7 +19,9 @@ class User extends DatabaseData
             measurementUnit varchar(255),
             measurementValue varchar(255),
             propertyType varchar(255),
-            propertyValue varchar(255)
+            propertyValue varchar(255),
+            quantity varchar(255),
+            date varchar(255)
         )";
 
         // table customer

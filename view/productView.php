@@ -15,6 +15,8 @@ class ProductView
         echo "<th>measurement value</th>";
         echo "<th>property type</th>";
         echo "<th>property value</th>";
+        echo "<th>quantity</th>";
+        echo "<th>date</th>";
         echo "<th></th>";
         echo "</tr>";
         foreach ($productsList as $product) {
@@ -27,6 +29,8 @@ class ProductView
             echo "<td><input type='text' name='measurementValue' value='" . $product[4] . "'></td>";
             echo "<td><input type='text' name='propertyType' value='" . $product[5] . "'></td>";
             echo "<td><input type='text' name='propertyValue' value='" . $product[6] . "'></td>";
+            echo "<td><input disabled type='text' name='quantity' value='" . $product[7] . "'></td>";
+            echo "<td><input disabled type='text' name='date' value='" . $product[8] . "'></td>";
             echo "<td><input type='submit' name='editProductBtn' value='edit'><input type='submit' name='deleteProductBtn' value='delete'></td>";
             echo "<input hidden name='idProduct' value='" . $product[0] . "'>";
             echo "</form>";

@@ -16,7 +16,7 @@ class Product extends DatabaseData
         $result = $mysqli->query($query1);
 
         while ($row = $result->fetch_assoc()) {
-            $arr = [$row['id'], $row['productName'], $row['productBrand'], $row['measurementUnit'], $row['measurementValue'], $row['propertyType'], $row['propertyValue']];
+            $arr = [$row['id'], $row['productName'], $row['productBrand'], $row['measurementUnit'], $row['measurementValue'], $row['propertyType'], $row['propertyValue'], $row['quantity'], $row['date']];
             array_push($this->productsList, $arr);
         }
 
@@ -33,7 +33,9 @@ class Product extends DatabaseData
         $measurementValue = $_POST["measurementValue"];
         $propertyType = $_POST["propertyType"];
         $propertyValue = $_POST["propertyValue"];
-
+        $quantity = '0';
+        $currentDate = getdate();
+        $date = "{$currentDate['mday']}/{$currentDate['month']}/{$currentDate['year']}";
 
         $mysqli = $this->getConnection();
         session_start();
@@ -45,14 +47,18 @@ class Product extends DatabaseData
             measurementUnit,
             measurementValue,
             propertyType,
-            propertyValue
+            propertyValue,
+            quantity,
+            date
         ) VALUES (
             '" . $productName . "',
             '" . $productBrand . "',
             '" . $measurementUnit . "',
             '" . $measurementValue . "',
             '" . $propertyType . "',
-            '" . $propertyValue . "'
+            '" . $propertyValue . "',
+            '" . $quantity . "',
+            '" . $date . "'
         )";
 
         $mysqli->query($query0);
