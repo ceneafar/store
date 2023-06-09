@@ -6,11 +6,13 @@ require_once("controller/productcontroller.php");
 require_once("controller/customercontroller.php");
 require_once("controller/suppliercontroller.php");
 require_once("controller/purchasecontroller.php");
+require_once("controller/invoicecontroller.php");
 
 $product = new ProductController();
 $customer = new CustomerController();
 $supplier = new SupplierController();
 $purchase = new PurchaseController();
+$invoice = new InvoiceController();
 
 if (isset($_GET["product"]) && $_GET["product"] == "createProduct") {
     $product->createProduct();
@@ -39,6 +41,8 @@ if (isset($_GET["product"]) && $_GET["product"] == "createProduct") {
         navigationController::supplier();
     } else if ($_GET["nav"] == "purchase") {
         navigationController::purchase();
+    } else if ($_GET["nav"] == "invoice") {
+        navigationController::invoice();
     }
 } else if (isset($_GET["flag"]) && $_GET["flag"] == "signup") {
     userController::showSignupView();

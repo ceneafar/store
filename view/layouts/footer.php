@@ -15,6 +15,9 @@
     purchase1 = document.getElementById('purchase');
     purchase2 = document.getElementById('purchaseList');
 
+    invoice1 = document.getElementById('invoice');
+    invoice2 = document.getElementById('invoiceList');
+
     if (product1 && product2) {
         collection.append(product1);
         collection.append(product2);
@@ -37,6 +40,10 @@
     if (purchase1 && purchase2) {
         collection.append(purchase1);
         collection.append(purchase2);
+    }
+
+    if (invoice1) {
+        collection.append(invoice1);
     }
 </script>
 

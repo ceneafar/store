@@ -50,6 +50,9 @@ if (!isset($_SESSION["username"])) {
             <a href="index.php?nav=purchase">
                 <li><i class="fa fa-file-text-o"></i> Purchase</li>
             </a>
+            <a href="index.php?nav=invoice">
+                <li><i class="fa fa-file-text-o"></i> Invoice</li>
+            </a>
         </ul>
     </nav>
 

@@ -4,6 +4,7 @@ require_once("controller/productcontroller.php");
 require_once("controller/currencycontroller.php");
 require_once("controller/suppliercontroller.php");
 require_once("controller/purchasecontroller.php");
+require_once("controller/invoicecontroller.php");
 
 class navigationController
 {
@@ -55,6 +56,13 @@ class navigationController
         session_start();
         $purchase->showPurchaseForm();
 
+        require_once("./view/login.php");
+    }
+
+    static function invoice(){
+        $invoice = new InvoiceController();
+        $invoice->showInvoiceForm();
+        session_start();
         require_once("./view/login.php");
     }
 }
