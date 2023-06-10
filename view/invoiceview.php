@@ -8,9 +8,9 @@ class InvoiceView
         <div id='invoice'>
             <h2>Invoice</h2>
             <form>";
-                $this->createDropdownList($customerList);
-                $this->createDropdownList($productList);
-                echo"<input type='text'>
+        $this->createDropdownList($customerList, 3);
+        $this->createDropdownList($productList, 7);
+        echo "<input type='text'>
                 <input type='text'>
                 <input type='text'>
             </form>
@@ -18,7 +18,7 @@ class InvoiceView
         ";
     }
 
-    private function createDropdownList($list)
+    private function createDropdownList($list, $number)
     {
         echo "
         <select>
@@ -26,7 +26,11 @@ class InvoiceView
         ";
 
         foreach ($list as $row) {
-            echo "<option>$row[0] $row[1] $row[2]</option>";
+            echo "<option value='$row[0]'>";
+            for ($i = 0; $i < $number; $i++) {                
+                echo "$row[$i] ";
+            }
+            echo "</option>";
         }
 
         echo "
