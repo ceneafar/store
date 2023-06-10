@@ -16,6 +16,7 @@ class InvoiceController
     public function showInvoiceForm()
     {
         $customerList = $this->invoiceModel->getCustomerList();
-        $this->invoiceView->showInvoiceForm($customerList);
+        $productList = $this->invoiceModel->getProductList();
+        $this->invoiceView->showInvoiceForm($customerList, $productList);
     }
 }
