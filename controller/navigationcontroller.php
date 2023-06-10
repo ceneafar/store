@@ -60,9 +60,10 @@ class navigationController
     }
 
     static function invoice(){
+        session_start();
         $invoice = new InvoiceController();
         $invoice->showInvoiceForm();
-        session_start();
+        
         require_once("./view/login.php");
     }
 }

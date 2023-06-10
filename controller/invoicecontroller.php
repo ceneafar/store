@@ -13,7 +13,9 @@ class InvoiceController
         $this->invoiceView = new InvoiceView();
     }
 
-    public function showInvoiceForm(){
-        $this->invoiceView->showInvoiceForm();
+    public function showInvoiceForm()
+    {
+        $customerList = $this->invoiceModel->getCustomerList();
+        $this->invoiceView->showInvoiceForm($customerList);
     }
 }
