@@ -7,7 +7,8 @@ body {
     margin: 0;
 }
 
-input {
+input,
+select {
     font-family: 'Ubuntu', sans-serif;
     padding: 5px;
     border: none;
@@ -177,4 +178,50 @@ td {
     justify-content: center;
     align-items: flex-start;
     padding: 10px;
+}
+
+#invoice,
+th,
+td {
+    width: 800px;
+    background-color: beige;
+    height: 100px;
+}
+
+#invoice table {
+    background-color: black;
+   
+}
+
+.section {
+    background: gray;
+    height: 100px;
+}
+
+.three {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#invoice a {
+    text-decoration: none;
+    color: beige;    
+    width: 80px;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    text-align: center;
+    margin:  10px;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boxTable{
+    height: 1000px;
+    border: solid;
 }
