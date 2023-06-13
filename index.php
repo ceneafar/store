@@ -56,6 +56,8 @@ if (isset($_GET["product"]) && $_GET["product"] == "createProduct") {
     $invoice->showAddPaymentForm();
 } else if (isset($_GET["add"]) == "add") {
     $invoice->showAddProductForm();
-} else {
+} else if (isset($_GET["invoice"]) == "addProduct") {
+    $invoice->addProduct();
+}else {
     userController::showLoginView();
 }

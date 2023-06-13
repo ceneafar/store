@@ -20,15 +20,41 @@ class InvoiceController
         $this->invoiceView->showInvoiceForm($customerList, $productList);
     }
 
-    public function showAddProductForm(){       
-        $this->invoiceView->showAddProductForm();
+    public function showAddProductForm()
+    {
+        session_start();
+        $productList = $this->invoiceModel->getProductList();
+        $this->invoiceView->showAddProductForm($productList);
+        require_once("./view/login.php");
+    }
+
+    public function showAddPaymentForm()
+    {
+        $this->invoiceView->showAddPaymentForm();
         session_start();
         require_once("./view/login.php");
     }
 
-    public function showAddPaymentForm(){
-        $this->invoiceView->showAddPaymentForm();
+    public function addProduct()
+    {
+        $productInvoice = $_POST['productInvoice'];
+        $productInvoiceQuantity = $_POST['productInvoiceQuantity'];
+
+        $productInvoiceArr = array();
+        $productInvoiceQuantityArr = array();
+
+        if (isset($_COOKIE['productsId']) && isset($_COOKIE['productsQuantity'])) {   
+            $productInvoiceArr = explode(",", $_COOKIE['productsId']);
+            $productInvoiceQuantityArr = explode(",", $_COOKIE['productsQuantity']);
+        }
+
+        array_push($productInvoiceArr, $productInvoice);
+        array_push($productInvoiceQuantityArr, $productInvoiceQuantity);
+
+        setcookie("productsId", implode(",", $productInvoiceArr));
+        setcookie("productsQuantity", implode(",", $productInvoiceQuantityArr));
+
         session_start();
-        require_once("./view/login.php");
+        header("Location: /store/index.php?nav=invoice");
     }
 }

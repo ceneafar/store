@@ -20,29 +20,27 @@ class InvoiceView
                         <th>price</th>
                         <th>quantity</th>
                         <th>total</th>
-                    </tr>
-                    <tr>
-                        <td>#1</td>
-                        <td>product1</td>
-                        <td>$15,00</td>
-                        <td>5</td>
-                        <td>$75,00</td>
-                    </tr>
-                    <tr>
-                        <td>#2</td>
-                        <td>product2</td>
-                        <td>$15,00</td>
-                        <td>5</td>
-                        <td>$75,00</td>
-                    </tr>
-                    <tr>
-                        <td>#3</td>
-                        <td>product3</td>
-                        <td>$15,00</td>
-                        <td>5</td>
-                        <td>$75,00</td>
-                    </tr>
-                </table>
+                    </tr>";
+
+        if (isset($_COOKIE['productsQuantity'])) {
+            $productInvoiceArr = explode(",", $_COOKIE['productsId']);
+            $productsQuantityArr = explode(",", $_COOKIE['productsQuantity']);
+
+            for ($i = 0; $i < count($productInvoiceArr); $i++) {
+                echo "
+                <tr>
+                    <td>$productInvoiceArr[$i]</td>
+                    <td></td>
+                    <td></td>
+                    <td>$productsQuantityArr[$i]</td>
+                    <td></td>
+                </tr>
+                ";
+            }
+        }
+
+        echo "
+            </table>
                 <div class='section three'>
                     <div class='box'>
                         <a href='index.php?add=add'>Add</a>
@@ -86,11 +84,22 @@ class InvoiceView
         ";
     }
 
-    public function showAddProductForm()
+    public function showAddProductForm($productList)
     {
         echo "
         <div id='invoiceProduct'>
             <h2>Add product</h2>
+            <form action='index.php?invoice=addProduct' method='post'>
+            <select name='productInvoice'>";
+
+        foreach ($productList as $product) {
+            echo "<option value='$product[0]'>$product[0] $product[1] $product[2] $product[3]</option>";
+        }
+
+        echo "</select>
+            <input placeholder='quantity' name='productInvoiceQuantity'>
+            <input type='submit' value='add'>
+            </form>
             <a href='index.php?nav=invoice'>back</a>
         </div>
         ";
