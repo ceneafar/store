@@ -52,10 +52,10 @@ if (isset($_GET["product"]) && $_GET["product"] == "createProduct") {
     userController::loginUser();
 } elseif (isset($_GET["flag"]) && $_GET["flag"] == "close") {
     userController::closeSession();
-} else if (isset($_GET["invoice"])) {
-    if (isset($_GET["invoice"]) == "add") {
-    
-    }
+} else if (isset($_GET["payment"]) == "payment") {
+    $invoice->showAddPaymentForm();
+} else if (isset($_GET["add"]) == "add") {
+    $invoice->showAddProductForm();
 } else {
     userController::showLoginView();
 }

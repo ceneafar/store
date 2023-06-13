@@ -45,9 +45,9 @@ class InvoiceView
                 </table>
                 <div class='section three'>
                     <div class='box'>
-                        <a href='index.php?invoice=add'>Add</a>
-                        <a href='index.php?invoice=payment'>Payment</a>
-                        <a href='index.php?invoice=cancel'>Cancel</a>
+                        <a href='index.php?add=add'>Add</a>
+                        <a href='index.php?payment=payment'>Payment</a>
+                        <a href='#'>Cancel</a>
                     </div>
 
                     <div>Payable $15,00</div>
@@ -58,7 +58,7 @@ class InvoiceView
                             <div>Tax 0,00%</div>
                             <div>Total $15,00</div>
                         </div>
-                        <a href='index.php?invoice=billing'>Billing</a>
+                        <a href='#'>Billing</a>
                     </div>                    
                 </div>
             </div>  
@@ -86,6 +86,23 @@ class InvoiceView
         ";
     }
 
-    
+    public function showAddProductForm()
+    {
+        echo "
+        <div id='invoiceProduct'>
+            <h2>Add product</h2>
+            <a href='index.php?nav=invoice'>back</a>
+        </div>
+        ";
+    }
 
+    public function showAddPaymentForm()
+    {
+        echo "
+        <div id='invoicePayment'>
+            <h2>Add payment</h2>
+            <a href='index.php?nav=invoice'>back</a>
+        </div>
+        ";
+    }
 }
