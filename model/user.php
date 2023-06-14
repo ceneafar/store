@@ -21,7 +21,8 @@ class User extends DatabaseData
             propertyType varchar(255),
             propertyValue varchar(255),
             quantity varchar(255),
-            date varchar(255)
+            date varchar(255),
+            price varchar(255)
         )";
 
         // table customer

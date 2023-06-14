@@ -68,4 +68,48 @@ class Invoice extends DatabaseData
 
         return $this->productList;
     }
+
+    public function getProduct($productId)
+    {
+        $productDatabaseName = "store_{$_SESSION['username']}";
+        $productTableName =  "{$_SESSION['username']}_products";
+        $arr = "";
+
+        $query0 = "USE $productDatabaseName";
+        $query1 = "SELECT * FROM $productTableName WHERE id='$productId'";
+
+        $mysqli = $this->getConnection();
+
+        $mysqli->query($query0);
+        $result = $mysqli->query($query1);
+        $mysqli->close();
+
+        while ($row = $result->fetch_assoc()) {
+            $arr = $row['productName'] . " " . $row['productBrand'] . " " . $row['measurementUnit'] . " " . $row['measurementValue'] . " " . $row['propertyType'] . " " . $row['propertyValue'];
+        }
+
+        return $arr;
+    }
+
+    public function getProductPrice($productId)
+    {
+        $productDatabaseName = "store_{$_SESSION['username']}";
+        $productTableName =  "{$_SESSION['username']}_products";
+        $price = "";
+
+        $query0 = "USE $productDatabaseName";
+        $query1 = "SELECT * FROM $productTableName WHERE id='$productId'";
+
+        $mysqli = $this->getConnection();
+
+        $mysqli->query($query0);
+        $result = $mysqli->query($query1);
+        $mysqli->close();
+
+        while ($row = $result->fetch_assoc()) {
+            $price = $row['price'];
+        }
+
+        return $price;
+    }
 }

@@ -25,7 +25,8 @@ class Product extends DatabaseData
                 $row['propertyType'],
                 $row['propertyValue'],
                 $row['quantity'],
-                $row['date']
+                $row['date'],
+                $row['price']
             ];
             array_push($this->productsList, $arr);
         }
@@ -43,6 +44,8 @@ class Product extends DatabaseData
         $measurementValue = $_POST["measurementValue"];
         $propertyType = $_POST["propertyType"];
         $propertyValue = $_POST["propertyValue"];
+        $price = $_POST["price"];
+
         $quantity = '0';
         $currentDate = getdate();
         $date = "{$currentDate['mday']}/{$currentDate['month']}/{$currentDate['year']}";
@@ -59,7 +62,8 @@ class Product extends DatabaseData
             propertyType,
             propertyValue,
             quantity,
-            date
+            date,
+            price
         ) VALUES (
             '" . $productName . "',
             '" . $productBrand . "',
@@ -68,7 +72,8 @@ class Product extends DatabaseData
             '" . $propertyType . "',
             '" . $propertyValue . "',
             '" . $quantity . "',
-            '" . $date . "'
+            '" . $date . "',
+            '" . $price . "'
         )";
 
         $mysqli->query($query0);
@@ -86,17 +91,21 @@ class Product extends DatabaseData
             'measurementUnit' => $_POST["measurementUnit"],
             'measurementValue' => $_POST["measurementValue"],
             'propertyType' => $_POST["propertyType"],
-            'propertyValue' => $_POST["propertyValue"]
+            'propertyValue' => $_POST["propertyValue"],
+            'price' => $_POST["price"]
         );
 
-        $mysqli = $this->getConnection();
         session_start();
+        $databaseName = "store_{$_SESSION['username']}";
+        $tableName = "{$_SESSION['username']}_products";
 
-        $query0  = "USE store_{$_SESSION['username']}";
+        $mysqli = $this->getConnection();        
+
+        $query0  = "USE $databaseName";
         $mysqli->query($query0);
 
         foreach ($array as $key => $value) {
-            $query1 =  "UPDATE {$_SESSION['username']}_products SET $key='$value' WHERE id=$id";
+            $query1 =  "UPDATE $tableName SET $key='$value' WHERE id=$id";
             $mysqli->query($query1);
         }
 
