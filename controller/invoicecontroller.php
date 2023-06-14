@@ -42,28 +42,33 @@ class InvoiceController
         $productInvoiceQuantity = $_POST['productInvoiceQuantity'];
         $productName = $this->invoiceModel->getProduct($productInvoice);
         $price = $this->invoiceModel->getProductPrice($productInvoice);
+        $totalPrice = floatval($productInvoiceQuantity) * floatval($price);
 
         $productInvoiceArr = array();
         $productInvoiceQuantityArr = array();
         $productNameArr = array();
         $productPriceArr = array();
+        $totalPriceArr = array();
 
         if (isset($_COOKIE['productsId']) && isset($_COOKIE['productsQuantity'])) {
             $productInvoiceArr = explode(",", $_COOKIE['productsId']);
             $productInvoiceQuantityArr = explode(",", $_COOKIE['productsQuantity']);
             $productNameArr = explode(",", $_COOKIE['productName']);
             $productPriceArr = explode(",", $_COOKIE['priceProduct']);
+            $totalPriceArr = explode(",", $_COOKIE['totalPrice']);
         }
 
         array_push($productInvoiceArr, $productInvoice);
         array_push($productInvoiceQuantityArr, $productInvoiceQuantity);
         array_push($productNameArr, $productName);
         array_push($productPriceArr, $price);
+        array_push($totalPriceArr, $totalPrice);
 
         setcookie("productsId", implode(",", $productInvoiceArr));
         setcookie("productsQuantity", implode(",", $productInvoiceQuantityArr));
         setcookie("productName", implode(",", $productNameArr));
         setcookie("priceProduct", implode(",", $productPriceArr));
+        setcookie("totalPrice", implode(",", $totalPriceArr));
 
 
         header("Location: /store/index.php?nav=invoice");
