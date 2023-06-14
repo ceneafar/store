@@ -37,24 +37,30 @@ class InvoiceController
 
     public function addProduct()
     {
+        session_start();
         $productInvoice = $_POST['productInvoice'];
         $productInvoiceQuantity = $_POST['productInvoiceQuantity'];
+        $productName = $this->invoiceModel->getProduct($productInvoice);
 
         $productInvoiceArr = array();
         $productInvoiceQuantityArr = array();
+        $productNameArr = array();
 
-        if (isset($_COOKIE['productsId']) && isset($_COOKIE['productsQuantity'])) {   
+        if (isset($_COOKIE['productsId']) && isset($_COOKIE['productsQuantity'])) {
             $productInvoiceArr = explode(",", $_COOKIE['productsId']);
             $productInvoiceQuantityArr = explode(",", $_COOKIE['productsQuantity']);
+            $productNameArr = explode(",", $_COOKIE['productName']);
         }
 
         array_push($productInvoiceArr, $productInvoice);
         array_push($productInvoiceQuantityArr, $productInvoiceQuantity);
+        array_push($productNameArr, $productName);
 
         setcookie("productsId", implode(",", $productInvoiceArr));
         setcookie("productsQuantity", implode(",", $productInvoiceQuantityArr));
+        setcookie("productName", implode(",", $productNameArr));
 
-        session_start();
+
         header("Location: /store/index.php?nav=invoice");
     }
 }

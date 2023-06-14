@@ -68,4 +68,26 @@ class Invoice extends DatabaseData
 
         return $this->productList;
     }
+
+    public function getProduct($productId)
+    {
+        $userDatabaseName = "store_{$_SESSION['username']}";
+        $userTableName =  "{$_SESSION['username']}_products";
+        $arr = "";
+
+        $query0 = "USE $userDatabaseName";
+        $query1 = "SELECT * FROM $userTableName WHERE id='$productId'";
+
+        $mysqli = $this->getConnection();
+
+        $mysqli->query($query0);
+        $result = $mysqli->query($query1);
+        $mysqli->close();
+
+        while ($row = $result->fetch_assoc()) {
+            $arr = $row['productName'] . " " . $row['productBrand'] . " " . $row['measurementUnit'] . " " . $row['measurementValue'] . " " . $row['propertyType'] . " " . $row['propertyValue'];
+        }
+
+        return $arr;
+    }
 }

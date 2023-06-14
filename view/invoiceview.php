@@ -25,12 +25,13 @@ class InvoiceView
         if (isset($_COOKIE['productsQuantity'])) {
             $productInvoiceArr = explode(",", $_COOKIE['productsId']);
             $productsQuantityArr = explode(",", $_COOKIE['productsQuantity']);
+            $productNameArr =  explode(",", $_COOKIE['productName']);
 
             for ($i = 0; $i < count($productInvoiceArr); $i++) {
                 echo "
                 <tr>
                     <td>$productInvoiceArr[$i]</td>
-                    <td></td>
+                    <td>$productNameArr[$i]</td>
                     <td></td>
                     <td>$productsQuantityArr[$i]</td>
                     <td></td>
