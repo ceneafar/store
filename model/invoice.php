@@ -71,12 +71,12 @@ class Invoice extends DatabaseData
 
     public function getProduct($productId)
     {
-        $userDatabaseName = "store_{$_SESSION['username']}";
-        $userTableName =  "{$_SESSION['username']}_products";
+        $productDatabaseName = "store_{$_SESSION['username']}";
+        $productTableName =  "{$_SESSION['username']}_products";
         $arr = "";
 
-        $query0 = "USE $userDatabaseName";
-        $query1 = "SELECT * FROM $userTableName WHERE id='$productId'";
+        $query0 = "USE $productDatabaseName";
+        $query1 = "SELECT * FROM $productTableName WHERE id='$productId'";
 
         $mysqli = $this->getConnection();
 
@@ -89,5 +89,27 @@ class Invoice extends DatabaseData
         }
 
         return $arr;
+    }
+
+    public function getProductPrice($productId)
+    {
+        $productDatabaseName = "store_{$_SESSION['username']}";
+        $productTableName =  "{$_SESSION['username']}_products";
+        $price = "";
+
+        $query0 = "USE $productDatabaseName";
+        $query1 = "SELECT * FROM $productTableName WHERE id='$productId'";
+
+        $mysqli = $this->getConnection();
+
+        $mysqli->query($query0);
+        $result = $mysqli->query($query1);
+        $mysqli->close();
+
+        while ($row = $result->fetch_assoc()) {
+            $price = $row['price'];
+        }
+
+        return $price;
     }
 }
