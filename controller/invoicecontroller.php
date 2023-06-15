@@ -73,4 +73,16 @@ class InvoiceController
 
         header("Location: /store/index.php?nav=invoice");
     }
+
+    public static function showTotalPrice()
+    {
+        $totalPriceArr = explode(",", $_COOKIE['totalPrice']);
+        $totalPrice = 0.00;
+
+        foreach ($totalPriceArr as $price) {
+            $totalPrice += floatval($price);
+        }
+
+        return $totalPrice;
+    }
 }
