@@ -35,6 +35,17 @@ class InvoiceController
         require_once("./view/login.php");
     }
 
+    public function cancelInvoice()
+    {
+        setcookie("productsId", "", -1);
+        setcookie("productsQuantity", "", -1);
+        setcookie("productName", "", -1);
+        setcookie("priceProduct", "", -1);
+        setcookie("totalPrice", "", -1);
+
+        header("Location: /store/index.php?nav=invoice");
+    }
+
     public function addProduct()
     {
         session_start();
@@ -76,6 +87,10 @@ class InvoiceController
 
     public static function showTotalPrice()
     {
+        if (!isset($_COOKIE['totalPrice'])) {
+            return 0.00;
+        }
+
         $totalPriceArr = explode(",", $_COOKIE['totalPrice']);
         $totalPrice = 0.00;
 

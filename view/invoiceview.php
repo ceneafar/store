@@ -51,7 +51,7 @@ class InvoiceView
                     <div class='box'>
                         <a href='index.php?add=add'>Add</a>
                         <a href='index.php?payment=payment'>Payment</a>
-                        <a href='#'>Cancel</a>
+                        <a href='index.php?cancelInvoice=cancelInvoice'>Cancel</a>
                     </div>
 
                     <div>Payable $15,00</div>
