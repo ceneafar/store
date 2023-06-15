@@ -1,9 +1,12 @@
 <?php
+require_once('controller/invoicecontroller.php');
 
 class InvoiceView
 {
     public function showInvoiceForm($customerList, $productList)
     {
+
+
         echo "
         <div id='invoice'>
             <h2>Invoice</h2>
@@ -26,7 +29,7 @@ class InvoiceView
             $productInvoiceArr = explode(",", $_COOKIE['productsId']);
             $productsQuantityArr = explode(",", $_COOKIE['productsQuantity']);
             $productNameArr =  explode(",", $_COOKIE['productName']);
-            $productPriceArr =  explode(",", $_COOKIE['priceProduct']);            
+            $productPriceArr =  explode(",", $_COOKIE['priceProduct']);
             $totalPriceArr = explode(",", $_COOKIE['totalPrice']);
 
             for ($i = 0; $i < count($productInvoiceArr); $i++) {
@@ -54,11 +57,11 @@ class InvoiceView
                     <div>Payable $15,00</div>
                     
                     <div class='box'>
-                        <div>
-                            <div>Subtotal $15,00</div>
-                            <div>Tax 0,00%</div>
-                            <div>Total $15,00</div>
-                        </div>
+                        <div>";
+        echo "<div>Subtotal $" . InvoiceController::showTotalPrice() . "</div>";
+        echo "<div>Tax 0,00%</div>";
+        echo "<div>Total $" . InvoiceController::showTotalPrice() . "</div>";
+        echo "</div>
                         <a href='#'>Billing</a>
                     </div>                    
                 </div>
