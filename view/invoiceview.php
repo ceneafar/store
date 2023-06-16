@@ -116,6 +116,14 @@ class InvoiceView
         echo "
         <div id='invoicePayment'>
             <h2>Add payment</h2>
+            <form>
+                <select>
+                    <option></option>
+                    <option></option>
+                    <option></option>
+                    <option></option>
+                </select>
+            </form>
             <a href='index.php?nav=invoice'>back</a>
         </div>
         ";

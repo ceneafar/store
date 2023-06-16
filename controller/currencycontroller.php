@@ -15,5 +15,6 @@ class CurrencyController
 
     public function showCurrencyView(){
         $this->currencyView->showCurrencyRate();
+        $this->currencyView->showPaymentMethods();
     }
 }

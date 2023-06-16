@@ -42,6 +42,14 @@ class User extends DatabaseData
             rate dec(6,4) 
         )";
 
+        // table payment methods
+
+        $query8 = "CREATE TABLE {$username}_payment_method (
+            id int primary key not null auto_increment,
+            paymentMethodName varchar(255),
+            symbol varchar(255)
+        )";
+
         // table supplier
 
         $query6 = "CREATE TABLE {$username}_suppliers (
@@ -69,6 +77,7 @@ class User extends DatabaseData
         $mysqli->query($query5);
         $mysqli->query($query6);
         $mysqli->query($query7);
+        $mysqli->query($query8);
 
         $mysqli->close();
     }

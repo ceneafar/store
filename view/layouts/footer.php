@@ -8,6 +8,8 @@
     customer2 = document.getElementById('createCustomer');
 
     currency1 = document.getElementById('currency');
+    currency2 = document.getElementById('paymentMethod');
+
 
     supplier1 = document.getElementById('supplier');
     supplier2 = document.getElementById('supplierList');
@@ -30,8 +32,9 @@
         collection.append(customer2);
     }
 
-    if (currency1) {
+    if (currency1 && currency2) {
         collection.append(currency1);
+        collection.append(currency2);
     }
 
     if (supplier1 && supplier2) {
