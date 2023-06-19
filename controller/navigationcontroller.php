@@ -35,9 +35,10 @@ class navigationController
 
     static function currency()
     {
+        
         $currency = new CurrencyController();
         $currency->showCurrencyView();
-        session_start();
+        
         require_once("./view/login.php");
     }
 

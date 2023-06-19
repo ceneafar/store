@@ -9,7 +9,7 @@
 
     currency1 = document.getElementById('currency');
     currency2 = document.getElementById('paymentMethod');
-
+    currency3 = document.getElementById('PaymentMethodsList');
 
     supplier1 = document.getElementById('supplier');
     supplier2 = document.getElementById('supplierList');
@@ -32,9 +32,10 @@
         collection.append(customer2);
     }
 
-    if (currency1 && currency2) {
+    if (currency1 && currency2 && currency3) {
         collection.append(currency1);
         collection.append(currency2);
+        collection.append(currency3);
     }
 
     if (supplier1 && supplier2) {
