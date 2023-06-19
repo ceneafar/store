@@ -13,8 +13,17 @@ class CurrencyController
         $this->currencyView = new CurrencyView();
     }
 
-    public function showCurrencyView(){
+    public function showCurrencyView()
+    {
         $this->currencyView->showCurrencyRate();
         $this->currencyView->showPaymentMethods();
+        $list = $this->currencyModel->getPaymentMethods();
+        $this->currencyView->showPaymentMethodsList($list);
+    }
+
+    public function createPaymentMethod()
+    {
+        $this->currencyModel->createPaymentMethod();
+        header("Location: /store/index.php?nav=currency");
     }
 }

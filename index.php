@@ -7,12 +7,14 @@ require_once("controller/customercontroller.php");
 require_once("controller/suppliercontroller.php");
 require_once("controller/purchasecontroller.php");
 require_once("controller/invoicecontroller.php");
+require_once("controller/currencycontroller.php");
 
 $product = new ProductController();
 $customer = new CustomerController();
 $supplier = new SupplierController();
 $purchase = new PurchaseController();
 $invoice = new InvoiceController();
+$currency = new CurrencyController();
 
 if (isset($_GET["product"]) && $_GET["product"] == "createProduct") {
     $product->createProduct();
@@ -60,6 +62,8 @@ if (isset($_GET["product"]) && $_GET["product"] == "createProduct") {
     $invoice->cancelInvoice();
 } else if (isset($_GET["invoice"]) == "addProduct") {
     $invoice->addProduct();
+} else if (isset($_GET["currency"]) == "createCustomer") {
+    $currency->createPaymentMethod();
 } else {
     userController::showLoginView();
 }
