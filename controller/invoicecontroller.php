@@ -1,15 +1,18 @@
 <?php
 require_once('model/invoice.php');
 require_once('view/invoiceview.php');
+require_once('model/currency.php');
 
 class InvoiceController
 {
     private $invoiceModel;
     private $invoiceView;
+    private $currencyModel;
 
     public function __construct()
     {
         $this->invoiceModel = new Invoice();
+        $this->currencyModel = new Currency();
         $this->invoiceView = new InvoiceView();
     }
 
@@ -17,7 +20,8 @@ class InvoiceController
     {
         $customerList = $this->invoiceModel->getCustomerList();
         $productList = $this->invoiceModel->getProductList();
-        $this->invoiceView->showInvoiceForm($customerList, $productList);
+        $total = $this->invoiceModel->showPaymentMethodsTotal();
+        $this->invoiceView->showInvoiceForm($customerList, $productList, $total);
     }
 
     public function showAddProductForm()
@@ -30,8 +34,8 @@ class InvoiceController
 
     public function showAddPaymentForm()
     {
-        $this->invoiceView->showAddPaymentForm();
-        session_start();
+        $list = $this->currencyModel->getPaymentMethods();        
+        $this->invoiceView->showAddPaymentForm($list);
         require_once("./view/login.php");
     }
 
@@ -42,6 +46,9 @@ class InvoiceController
         setcookie("productName", "", -1);
         setcookie("priceProduct", "", -1);
         setcookie("totalPrice", "", -1);
+
+        setcookie("paymentMethodId", "", -1);
+        setcookie("paymantAmount", "", -1);
 
         header("Location: /store/index.php?nav=invoice");
     }
@@ -99,5 +106,10 @@ class InvoiceController
         }
 
         return $totalPrice;
+    }
+
+    public function addPaymentMethod()
+    {
+        $this->invoiceModel->addPaymentMethod();
     }
 }

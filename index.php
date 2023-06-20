@@ -62,8 +62,10 @@ if (isset($_GET["product"]) && $_GET["product"] == "createProduct") {
     $invoice->cancelInvoice();
 } else if (isset($_GET["invoice"]) == "addProduct") {
     $invoice->addProduct();
-} else if (isset($_GET["currency"]) == "createCustomer") {
+} else if (isset($_GET["currency"]) == "createPayment") {
     $currency->createPaymentMethod();
+} else if (isset($_GET["invoiceA"]) == "addPaymentMethod") {
+    $invoice->addPaymentMethod();
 } else {
     userController::showLoginView();
 }

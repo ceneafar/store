@@ -112,4 +112,39 @@ class Invoice extends DatabaseData
 
         return $price;
     }
+
+    public function addPaymentMethod()
+    {
+        $paymentMethodId = $_POST['paymentMethodId'];
+        $paymantAmount = $_POST['paymantAmount'];
+
+        $paymentMethodIdArr = array();
+        $paymantAmountArr = array();
+
+        if (isset($_COOKIE['paymentMethodId']) && isset($_COOKIE['paymantAmount'])) {
+            $paymentMethodIdArr = explode(",", $_COOKIE['paymentMethodId']);
+            $paymantAmountArr = explode(",", $_COOKIE['paymantAmount']);
+        }
+
+        array_push($paymentMethodIdArr, $paymentMethodId);
+        array_push($paymantAmountArr, $paymantAmount);
+
+        setcookie("paymentMethodId", implode(",", $paymentMethodIdArr));
+        setcookie("paymantAmount", implode(",", $paymantAmountArr));
+
+        header("Location: /store/index.php?nav=invoice");
+    }
+
+    public function showPaymentMethodsTotal()
+    {
+        $total = 0;
+        if (isset($_COOKIE['paymentMethodId'])) {
+            $paymentMethodArr = explode(",", $_COOKIE['paymantAmount']);
+
+            foreach ($paymentMethodArr as $value) {
+                $total += floatval($value);
+            }
+        }
+        return $total;
+    }
 }
