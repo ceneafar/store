@@ -3,7 +3,7 @@ require_once('controller/invoicecontroller.php');
 
 class InvoiceView
 {
-    public function showInvoiceForm($customerList, $productList)
+    public function showInvoiceForm($customerList, $productList, $total)
     {
 
 
@@ -54,7 +54,9 @@ class InvoiceView
                         <a href='index.php?cancelInvoice=cancelInvoice'>Cancel</a>
                     </div>
 
-                    <div>Payable $15,00</div>
+                    <div>Amount Charged $$total</div>
+                    <br/>
+                    <div>Payable " . InvoiceController::showTotalPrice() - $total . "</div>
                     
                     <div class='box'>
                         <div>";
@@ -111,21 +113,44 @@ class InvoiceView
         ";
     }
 
-    public function showAddPaymentForm()
+    public function showAddPaymentForm($list)
     {
         echo "
         <div id='invoicePayment'>
             <h2>Add payment</h2>
-            <form>
-                <select>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                </select>
+            <form action='index.php?invoiceA=addPaymentMethod' method='post'>
+                <select name='paymentMethodId'>";
+        foreach ($list as $value) {
+            echo "<option value='$value[0]'>$value[0] $value[1] $value[2]</option>";
+        }
+        echo "</select>
+            <input type='text' placeholder='amount' name='paymantAmount'>
+            <input type='submit' value='add'>
             </form>
-            <a href='index.php?nav=invoice'>back</a>
-        </div>
-        ";
+            <a href='index.php?nav=invoice'>back</a>";
+
+        if (isset($_COOKIE['paymentMethodId'])) {
+            $paymentMethodIdArr = explode(",", $_COOKIE['paymentMethodId']);
+            $paymantAmountArr = explode(",", $_COOKIE['paymantAmount']);
+            echo "
+            <table>
+                <tr>
+                    <th>method</th>
+                    <th>amount</th>
+                </tr>
+                ";
+
+            for ($i = 0; $i < count($paymentMethodIdArr); $i++) {
+                echo "
+                <tr>
+                <td>$paymentMethodIdArr[$i]</td>
+                <td>$paymantAmountArr[$i]</td>
+                </tr>
+                ";
+            }
+            echo "</table>";
+        }
+
+        echo "</div>";
     }
 }
