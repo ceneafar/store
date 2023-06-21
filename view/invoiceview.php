@@ -132,10 +132,13 @@ class InvoiceView
         if (isset($_COOKIE['paymentMethodId'])) {
             $paymentMethodIdArr = explode(",", $_COOKIE['paymentMethodId']);
             $paymantAmountArr = explode(",", $_COOKIE['paymantAmount']);
+            $paymantNameArr = explode(",", $_COOKIE['paymantName']);
+
             echo "
             <table>
                 <tr>
                     <th>method</th>
+                    <th>name</th>
                     <th>amount</th>
                 </tr>
                 ";
@@ -144,6 +147,7 @@ class InvoiceView
                 echo "
                 <tr>
                 <td>$paymentMethodIdArr[$i]</td>
+                <td>$paymantNameArr[$i]</td>
                 <td>$paymantAmountArr[$i]</td>
                 </tr>
                 ";
