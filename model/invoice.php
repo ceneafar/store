@@ -117,20 +117,25 @@ class Invoice extends DatabaseData
     {
         $paymentMethodId = $_POST['paymentMethodId'];
         $paymantAmount = $_POST['paymantAmount'];
+        $paymantName = $this->getPatmentMethodsName($paymentMethodId);
 
         $paymentMethodIdArr = array();
         $paymantAmountArr = array();
+        $paymantNameArr = array();
 
-        if (isset($_COOKIE['paymentMethodId']) && isset($_COOKIE['paymantAmount'])) {
+        if (isset($_COOKIE['paymentMethodId']) && isset($_COOKIE['paymantAmount']) && isset($_COOKIE['paymantName'])) {
             $paymentMethodIdArr = explode(",", $_COOKIE['paymentMethodId']);
             $paymantAmountArr = explode(",", $_COOKIE['paymantAmount']);
+            $paymantNameArr = explode(",", $_COOKIE['paymantName']);
         }
 
         array_push($paymentMethodIdArr, $paymentMethodId);
         array_push($paymantAmountArr, $paymantAmount);
+        array_push($paymantNameArr, $paymantName);
 
         setcookie("paymentMethodId", implode(",", $paymentMethodIdArr));
         setcookie("paymantAmount", implode(",", $paymantAmountArr));
+        setcookie("paymantName", implode(",", $paymantNameArr));
 
         header("Location: /store/index.php?nav=invoice");
     }
@@ -146,5 +151,28 @@ class Invoice extends DatabaseData
             }
         }
         return $total;
+    }
+
+    private function getPatmentMethodsName($id)
+    {
+        session_start();
+        $res = '';
+        $userDatabaseName = "store_{$_SESSION['username']}";
+        $userTableName =  "{$_SESSION['username']}_payment_method";
+
+        $query0 = "USE $userDatabaseName";
+        $query1 = "SELECT paymentMethodName FROM $userTableName WHERE id='$id'";
+
+        $mysqli = $this->getConnection();
+
+        $mysqli->query($query0);
+        $result = $mysqli->query($query1);
+        $mysqli->close();
+
+        while ($row = $result->fetch_assoc()) {
+            $res = $row['paymentMethodName'];
+        }
+
+        return $res;
     }
 }
