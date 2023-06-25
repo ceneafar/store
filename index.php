@@ -66,6 +66,8 @@ if (isset($_GET["product"]) && $_GET["product"] == "createProduct") {
     $currency->createPaymentMethod();
 } else if (isset($_GET["invoiceA"]) == "addPaymentMethod") {
     $invoice->addPaymentMethod();
+} else if (isset($_GET["billing"]) == "billing") {
+    $invoice->billing();
 } else {
     userController::showLoginView();
 }

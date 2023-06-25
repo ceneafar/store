@@ -175,4 +175,113 @@ class Invoice extends DatabaseData
 
         return $res;
     }
+
+    public function getBillCounter()
+    {
+        session_start();
+        $arr = array();
+        $database = "store_{$_SESSION['username']}";
+        $table = "{$_SESSION['username']}_billing";
+
+        $query0 = "USE $database";
+        $query1 = "SELECT idBilling FROM $table";
+
+        $mysqli = $this->getConnection();
+
+        $mysqli->query($query0);
+        $result = $mysqli->query($query1);
+
+        while ($row = $result->fetch_assoc()) {
+            array_push($arr, $row['idBilling']);
+        }
+
+        return count($arr) == 0 ? 0 :  max($arr) + 1;        
+    }
+
+    public function registerInvoice()
+    {
+        $productInvoiceArr = array();
+        $productInvoiceQuantityArr = array();
+        $productNameArr = array();
+        $productPriceArr = array();
+        $totalPriceArr = array();
+
+        if (isset($_COOKIE['productsId']) && isset($_COOKIE['productsQuantity'])) {
+            $productInvoiceArr = explode(",", $_COOKIE['productsId']);
+            $productInvoiceQuantityArr = explode(",", $_COOKIE['productsQuantity']);
+            $productNameArr = explode(",", $_COOKIE['productName']);
+            $productPriceArr = explode(",", $_COOKIE['priceProduct']);
+            $totalPriceArr = explode(",", $_COOKIE['totalPrice']);
+        }
+
+        return array(
+            $productInvoiceArr,
+            $productInvoiceQuantityArr,
+            $productNameArr,
+            $productPriceArr,
+            $totalPriceArr
+        );
+    }
+
+    public function billing()
+    {
+        $billNumber = $this->getBillCounter();
+        $arr = $this->registerInvoice();
+
+        $productInvoice = "";
+        $productInvoiceQuantity = "";
+        $productName = "";
+        $productPrice = "";
+        $totalPrice = "";
+
+        $database = "store_{$_SESSION['username']}";
+        $table = "{$_SESSION['username']}_billing";
+
+
+        $query0 = "USE $database";
+        
+
+        $mysqli = $this->getConnection();
+        $mysqli->query($query0);
+
+
+
+        for ($i = 0; $i < count($arr[0]); $i++) {
+            $productInvoice = $arr[0][$i];
+            $productInvoiceQuantity = $arr[1][$i];
+            $productName = $arr[2][$i];
+            $productPrice = $arr[3][$i];
+            $totalPrice = $arr[4][$i];
+            
+            $query1 = "INSERT INTO $table (            
+                idBilling,
+                idProduct,
+                price,
+                quantity,
+                total,
+                productName            
+            ) VALUES (
+                '" . $billNumber . "',
+                '" . $productInvoice . "',   
+                '" . $productPrice . "',
+                '" . $productInvoiceQuantity . "',
+                '" . $totalPrice . "', 
+                '" . $productName . "'
+            )";
+
+            $mysqli->query($query1);
+        }
+
+
+
+        $mysqli->close();
+
+        setcookie("productsId", "", -1);
+        setcookie("productsQuantity", "", -1);
+        setcookie("productName", "", -1);
+        setcookie("priceProduct", "", -1);
+        setcookie("totalPrice", "", -1);
+
+        header("Location: /store/index.php?nav=invoice");
+    }
 }

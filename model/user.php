@@ -42,13 +42,7 @@ class User extends DatabaseData
             rate dec(6,4) 
         )";
 
-        // table payment methods
 
-        $query8 = "CREATE TABLE {$username}_payment_method (
-            id int primary key not null auto_increment,
-            paymentMethodName varchar(255),
-            symbol varchar(255)
-        )";
 
         // table supplier
 
@@ -69,6 +63,36 @@ class User extends DatabaseData
             total varchar(255)
         )";
 
+        // table payment methods
+        $query8 = "CREATE TABLE {$username}_payment_method (
+            id int primary key not null auto_increment,
+            paymentMethodName varchar(255),
+            symbol varchar(255)
+        )";
+
+        // table billing
+        $query9 = "CREATE TABLE {$username}_billing (
+            id int primary key not null auto_increment,
+            idBilling varchar(255),
+            idProduct varchar(255),
+            personId varchar(255),
+            operation varchar(255),
+            date varchar(255),
+            price varchar(255),
+            quantity varchar(255),
+            total varchar(255),
+            paymentId varchar(255),
+            productName varchar(255)
+
+        )";
+
+        // table payment
+        $query10 = "CREATE TABLE {$username}_payment (
+            paymentId int primary key not null auto_increment,
+            amount varchar(255),
+            paymentName varchar(255)
+        )";
+        
         $mysqli->query($query0);
         $mysqli->query($query1);
         $mysqli->query($query2);
@@ -78,6 +102,8 @@ class User extends DatabaseData
         $mysqli->query($query6);
         $mysqli->query($query7);
         $mysqli->query($query8);
+        $mysqli->query($query9);
+        $mysqli->query($query10);
 
         $mysqli->close();
     }
