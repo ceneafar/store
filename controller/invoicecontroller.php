@@ -34,7 +34,7 @@ class InvoiceController
 
     public function showAddPaymentForm()
     {
-        $list = $this->currencyModel->getPaymentMethods();        
+        $list = $this->currencyModel->getPaymentMethods();
         $this->invoiceView->showAddPaymentForm($list);
         require_once("./view/login.php");
     }
@@ -111,5 +111,10 @@ class InvoiceController
     public function addPaymentMethod()
     {
         $this->invoiceModel->addPaymentMethod();
+    }
+
+    public function billing()
+    {
+        $this->invoiceModel->billing();
     }
 }

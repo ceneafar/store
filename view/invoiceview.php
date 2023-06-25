@@ -64,7 +64,7 @@ class InvoiceView
         echo "<div>Tax 0,00%</div>";
         echo "<div>Total $" . InvoiceController::showTotalPrice() . "</div>";
         echo "</div>
-                        <a href='#'>Billing</a>
+                        <a href='index.php?billing=billing'>Billing</a>
                     </div>                    
                 </div>
             </div>  
