@@ -195,7 +195,7 @@ class Invoice extends DatabaseData
             array_push($arr, $row['idBilling']);
         }
 
-        return count($arr) == 0 ? 0 :  max($arr) + 1;        
+        return count($arr) == 0 ? 0 :  max($arr) + 1;
     }
 
     public function registerInvoice()
@@ -237,9 +237,7 @@ class Invoice extends DatabaseData
         $database = "store_{$_SESSION['username']}";
         $table = "{$_SESSION['username']}_billing";
 
-
         $query0 = "USE $database";
-        
 
         $mysqli = $this->getConnection();
         $mysqli->query($query0);
@@ -252,7 +250,9 @@ class Invoice extends DatabaseData
             $productName = $arr[2][$i];
             $productPrice = $arr[3][$i];
             $totalPrice = $arr[4][$i];
-            
+
+            $this->inventoryDiscounting($productInvoice, $productInvoiceQuantity);
+
             $query1 = "INSERT INTO $table (            
                 idBilling,
                 idProduct,
@@ -283,5 +283,26 @@ class Invoice extends DatabaseData
         setcookie("totalPrice", "", -1);
 
         header("Location: /store/index.php?nav=invoice");
+    }
+
+    public function inventoryDiscounting($idProduct, $quantity)
+    {
+        $database = "store_{$_SESSION['username']}";
+        $table = "{$_SESSION['username']}_products";
+
+        $query0 = "USE $database";
+        $query1 = "SELECT quantity FROM $table WHERE id='$idProduct'";
+
+        $mysqli = $this->getConnection();
+        $mysqli->query($query0);
+        $res = $mysqli->query($query1);
+
+        while ($row = $res->fetch_assoc()) {
+            $newQuantity = $row['quantity'] - $quantity;
+            $query2 = "UPDATE $table SET quantity='$newQuantity' WHERE id='$idProduct'";
+            $mysqli->query($query2);
+        }
+
+        $mysqli->close();
     }
 }
