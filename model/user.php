@@ -83,16 +83,17 @@ class User extends DatabaseData
             total varchar(255),
             paymentId varchar(255),
             productName varchar(255)
-
         )";
 
         // table payment
         $query10 = "CREATE TABLE {$username}_payment (
-            paymentId int primary key not null auto_increment,
+            id int primary key not null auto_increment,
+            invoiceId varchar(255),
+            paymentId varchar(255),
             amount varchar(255),
             paymentName varchar(255)
         )";
-        
+
         $mysqli->query($query0);
         $mysqli->query($query1);
         $mysqli->query($query2);

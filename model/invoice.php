@@ -242,8 +242,6 @@ class Invoice extends DatabaseData
         $mysqli = $this->getConnection();
         $mysqli->query($query0);
 
-
-
         for ($i = 0; $i < count($arr[0]); $i++) {
             $productInvoice = $arr[0][$i];
             $productInvoiceQuantity = $arr[1][$i];
@@ -272,9 +270,9 @@ class Invoice extends DatabaseData
             $mysqli->query($query1);
         }
 
-
-
         $mysqli->close();
+
+        $this->addPayment($billNumber);
 
         setcookie("productsId", "", -1);
         setcookie("productsQuantity", "", -1);
@@ -304,5 +302,46 @@ class Invoice extends DatabaseData
         }
 
         $mysqli->close();
+    }
+
+    public function addPayment($billNumber)
+    {
+        $paymentMethodIdArr = explode(',', $_COOKIE['paymentMethodId']);
+        $paymantAmountArr = explode(',', $_COOKIE['paymantAmount']);
+        $paymantNameArr = explode(',', $_COOKIE['paymantName']);
+
+        $database = "store_{$_SESSION['username']}";
+        $table = "{$_SESSION['username']}_payment";
+
+        $query0 = "USE $database";
+
+        $mysqli = $this->getConnection();
+        $mysqli->query($query0);
+
+        for ($i = 0; $i < count($paymentMethodIdArr); $i++) {
+            $paymentMethodId = $paymentMethodIdArr[$i];
+            $paymantAmount = $paymantAmountArr[$i];
+            $paymantName = $paymantNameArr[$i];
+
+            $query1 = "INSERT INTO $table (                     
+                invoiceId,      
+                paymentId,
+                amount,
+                paymentName          
+            ) VALUES (                
+                '" . $billNumber . "',
+                '" . $paymentMethodId . "',
+                '" . $paymantAmount . "',
+                '" . $paymantName . "'
+            )";
+
+            $mysqli->query($query1);
+        }
+
+        $mysqli->close();
+
+        setcookie("paymentMethodId", "", -1);
+        setcookie("paymantAmount", "", -1);
+        setcookie("paymantName", "", -1);
     }
 }
