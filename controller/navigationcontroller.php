@@ -21,7 +21,7 @@ class navigationController
     static function customer()
     {
         $customer = new CustomerController();
-        session_start();
+        //session_start();
         $customer->showCustomers();
 
         require_once("./view/login.php");

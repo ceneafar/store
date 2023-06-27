@@ -1,62 +1,35 @@
 <?php
-require_once('databasedata.php');
+require_once('crud.php');
 
-class Customer extends Databasedata
+class Customer extends Crud
 {
-    private $customersList = array();
-
     public function getCustomers()
     {
-        $mysqli = $this->getConnection();
+        $tablename = '_customers';
+        $properties = [
+            'id',
+            'name',
+            'lastname',
+            'address',
+            'phone',
+            'email'
+        ];
 
-        $query0  = "USE store_{$_SESSION['username']}";
-        $query1 = "SELECT * FROM {$_SESSION['username']}_customers";
-
-        $mysqli->query($query0);
-        $result = $mysqli->query($query1);
-
-        while ($row = $result->fetch_assoc()) {
-            $arr = [
-                $row['id'],
-                $row['name'],
-                $row['lastname'],
-                $row['address'],
-                $row['phone'],
-                $row['email']
-            ];
-            array_push($this->customersList, $arr);
-        }
-
-        return $this->customersList;
+        return $this->readObj($tablename, $properties);
     }
 
     public function createCustomer()
     {
-        $name = $_POST["name"];
-        $lastname = $_POST['lastName'];
-        $address = $_POST['address'];
-        $phone = $_POST['phoneNumber'];
-        $email = $_POST['email'];
 
-        $mysqli = $this->getConnection();
-        session_start();
+        $tablename = '_customers';
+        $properties = [
+            'name'      => $_POST['name'],
+            'lastname'  => $_POST['lastName'],
+            'address'   => $_POST['address'],
+            'phone'     => $_POST['phoneNumber'],
+            'email'     => $_POST['email']
+        ];
 
-        $query0  = "USE store_" . $_SESSION['username'];
-        $query1 = "INSERT INTO " . $_SESSION['username'] . "_customers (
-            name,
-            lastname,
-            address,
-            phone,
-            email
-        ) VALUES (
-            '" . $name . "',
-            '" . $lastname . "',
-            '" . $address . "',
-            '" . $phone . "',
-            '" . $email . "'
-        )";
-
-        $mysqli->query($query0);
-        $mysqli->query($query1);
+        $this->createObj($tablename, $properties);
     }
 }
