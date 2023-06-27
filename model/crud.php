@@ -9,6 +9,25 @@ class Crud extends DatabaseData
         $database = "store_$username";
         $table = $username . "" . $tableName; // username_tableName
 
+        $stringKey = "";
+        $stringValue = "";
+
+        foreach ($properties as $key => $value) {
+            $stringKey .= "$key,";
+            $stringValue .= "'$value',";
+        }
+
+        // delete the last comma
+        $stringKey = substr($stringKey, 0, -1);
+        $stringValue = substr($stringValue, 0, -1);
+
+        $query0 = "USE $database";
+        $query1 = "INSERT INTO $table ($stringKey) VALUES ($stringValue)";
+
+        $mysqli = $this->getConnection();
+
+        $mysqli->query($query0);
+        $mysqli->query($query1);
     }
     protected function readObj($tableName, $properties)
     {
