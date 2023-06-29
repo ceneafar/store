@@ -12,7 +12,7 @@ class navigationController
     static function product()
     {
         $products = new productController();
-        session_start();
+        //session_start();
         $products->showProducts();
 
         require_once("./view/login.php");
